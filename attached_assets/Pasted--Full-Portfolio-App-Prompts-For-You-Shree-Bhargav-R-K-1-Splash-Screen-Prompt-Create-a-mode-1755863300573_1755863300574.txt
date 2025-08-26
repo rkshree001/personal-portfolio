@@ -1,0 +1,125 @@
+📱 Full Portfolio App Prompts (For You – Shree Bhargav R K)
+1️⃣ Splash Screen Prompt
+
+"Create a modern splash screen with my name Shree Bhargav R K, role Android Developer Team Lead, and tagline: ‘Building Scalable Apps with Clean Code ✨’. Add smooth animations (fade-in and slide-up). Background: professional tech gradient. After 3 seconds, transition to the Home screen."
+
+2️⃣ Home Screen Prompt
+
+"Design a home screen that welcomes the user with my profile photo, name (Shree Bhargav R K), and tagline: ‘Passionate Android Developer | Team Lead | Tech Explorer’.
+Add navigation buttons for About Me, Projects, Skills, Resume, Contact, Achievements.
+Include light/dark theme toggle and a floating resume download button 📄."
+
+3️⃣ About Me Prompt
+
+*"Create an interactive About Me section for my portfolio app:
+
+👋 Greeting: Hi, I’m Shree Bhargav R K.
+Headline: ‘Android Developer Team Lead | Problem Solver | Innovator’.
+
+Bio: Highly skilled Android Developer with 2+ years of experience in Java, Kotlin, Jetpack Compose, Retrofit, Room, REST APIs, PDF Generation, USB/Wi-Fi Printing. Strong background in MVVM, UI/UX optimization, performance tuning, and leadership.
+
+Journey: From ERP Intern (SQL/CRM) → Freelance Android Developer → Team Lead managing 10 developers.
+
+Fun Fact: ⚡ Harry Potter fan & Marvel enthusiast 🦸‍♂️.
+
+CTA: 🚀 ‘Let’s build something amazing together – explore my projects or download my resume!’
+
+Make it interactive with: toggle (short bio / full bio), animated skill chips, and smooth transitions."*
+
+4️⃣ Projects Prompt
+
+*"Create a Projects section with cards. Each card shows project name, description, tech stack, and screenshots. Add filter buttons: Mobile Apps | POS/Printing | Academic | Freelance.
+
+Projects:
+
+Retail Application → Multi-platform POS, booking, Wi-Fi/USB thermal printer integration.
+
+Pozo Printer → Android POS printing with regex extraction + secure token decryption.
+
+Boating Application → Online booking (TTDC & Kodaikanal), role-based logins, offline DB, HDFC payments.
+
+Insurance Policy Apps → Policy Fynder (policy comparison, secure payments), POSP (onboarding with KYC, role dashboards).
+
+AI Drowning Prevention → AI face recognition safety system.
+
+Phishing Detection ML → Fraud prevention model.
+
+Aquaponics IoT → Arduino-based smart farming system."*
+
+5️⃣ Skills Prompt
+
+*"Create a Skills section as interactive chips or progress bars.
+
+Programming: Java, Kotlin, C, C++, Spring Boot
+Android: Jetpack Compose, MVVM, Retrofit, Room DB, SQLite, Firebase, SDK integration
+Printing: ESC/POS, PCL, USB/Wi-Fi printing
+Testing: JUnit, Espresso, Cross-platform testing
+Tools: Git, GitHub, GitLab, Jira, Gradle, Android Studio
+Other: Debugging, Adobe Premiere, CorelDraw
+
+Tap on each skill → show where I used it in real projects."*
+
+6️⃣ Resume Prompt
+
+*"Add a Resume page with:
+
+View Resume (In-app PDF Viewer)
+
+Download Resume (PDF)
+
+QR Code for quick resume sharing.
+
+Header: ‘📄 My Journey in One Page’. Keep it simple and professional."*
+
+7️⃣ Achievements & Extras Prompt
+
+*"Create an Achievements section with cards:
+
+🏆 Vice President – ISTE → Led initiatives in technical education.
+🏀 Basketball Team Captain → Leadership & teamwork.
+🎖️ NCC Sergeant → Discipline & leadership.
+🌍 Rotary Club Leader → Organized marathons, eye camps, blood donation drives.
+
+Also list my Certifications:
+
+Full Stack Developer – CADD (2024)
+
+Java/Python/C/C++ – CADD (2023)
+
+Poster Presentation – Sathyabama (2023)
+
+NCC B & C Certificates (2020)
+
+Adobe Premiere & CorelDraw (2018)
+
+Make it scrollable and animated (tap = expand details)."*
+
+8️⃣ Contact Prompt
+
+*"Build a Contact page with:
+
+📧 Email: rkshree001@gmail.com
+ (click → open mail app)
+
+📞 Phone: 9080322066 (click → dialer)
+
+🔗 LinkedIn: linkedin.com/in/shree-bhargav-r-k-7b5b1419b
+
+💻 GitHub: github.com/rkshree001
+
+Add a contact form (Name, Email, Message → send to my email).
+End with a thank-you note: ‘Thanks for visiting my portfolio! Let’s connect 🤝’."*
+
+9️⃣ Bonus Features Prompt
+
+*"Enhance the portfolio app with:
+
+🌙☀️ Dark/Light mode toggle
+
+📂 Floating resume button
+
+🔍 Search in Projects/Skills
+
+🎨 Smooth animations between sections
+
+Easter Eggs → Tap Harry Potter wand = magic sparks ✨, Tap Iron Man mask = arc reactor glow 🔵"*

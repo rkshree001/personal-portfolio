@@ -1,0 +1,415 @@
+run locally
+
+npm install -g netlify-cli
+netlify dev
+
+for live
+netlify deploy --build --prod
+
+
+
+
+Microsoft Windows [Version 10.0.19045.6216]
+(c) Microsoft Corporation. All rights reserved.
+
+F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main>netlify deploy --build
+ »   Warning: --build is now the default and can safely be omitted.
+​
+Netlify Build
+────────────────────────────────────────────────────────────────
+​
+> Version
+  @netlify/build 35.1.2
+​
+> Flags
+  accountId: 68a6d5b7888f5d55e5ec5652
+​
+> Current directory
+  F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main
+​
+> Config file
+  F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\netlify.toml
+​
+> Context
+  production
+​
+> Installing extensions
+   - neon
+​
+> Loading extensions
+   - neon
+​
+build.command from netlify.toml
+────────────────────────────────────────────────────────────────
+​
+$ npm run build
+
+> rest-express@1.0.0 build
+> vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+
+vite v5.4.19 building for production...
+transforming (3) src\main.tsxBrowserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 2233 modules transformed.
+../dist/public/index.html                   2.20 kB │ gzip:   0.86 kB
+../dist/public/assets/index-DSjFyQev.css  112.45 kB │ gzip:  17.19 kB
+../dist/public/assets/index-Cggw-8zx.js   669.76 kB │ gzip: 207.11 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 8.85s
+
+  dist\index.js  10.0kb
+
+Done in 6ms
+​
+(build.command completed in 10.1s)
+​
+Functions bundling
+────────────────────────────────────────────────────────────────
+​
+Packaging Functions from netlify\functions directory:
+ - notify.js
+​
+​
+(Functions bundling completed in 242ms)
+
+Deploying to Netlify
+────────────────────────────────────────────────────────────────
+
+Deploy path:        F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\dist
+Functions path:     F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\netlify\functions
+Configuration path: F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\netlify.toml
+
+√ Finished uploading blobs to deploy store
+√ Deploying functions from cache (use --skip-functions-cache to override)
+√ Finished hashing 6 files and 1 functions
+√ CDN requesting 0 files and 1 functions
+√ Finished uploading 1 assets
+√ Deploy is live!
+​
+Netlify Build Complete
+────────────────────────────────────────────────────────────────
+​
+(Netlify Build completed in 54s)
+
+🚀 Deploy complete
+────────────────────────────────────────────────────────────────
+
+   ╭──────────────────────────────── ⬥  Draft deploy is live ⬥  ─────────────────────────────────╮
+   │                                                                                             │
+   │   Deployed draft to https://68ad510bf07a054e2379bef0--shree-bhargav-portfolio.netlify.app   │
+   │                                                                                             │
+   ╰─────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Build logs:         https://app.netlify.com/projects/shree-bhargav-portfolio/deploys/68ad510bf07a054e2379bef0
+Function logs:      https://app.netlify.com/projects/shree-bhargav-portfolio/logs/functions?scope=deploy:68ad510bf07a054e2379bef0
+Edge function Logs: https://app.netlify.com/projects/shree-bhargav-portfolio/logs/edge-functions?scope=deployid:68ad510bf07a054e2379bef0
+
+If everything looks good on your draft URL, deploy it to your main project URL with the --prod flag:
+netlify deploy --prod
+
+
+F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main>netlify deploy --build
+ »   Warning: --build is now the default and can safely be omitted.
+​
+Netlify Build
+────────────────────────────────────────────────────────────────
+​
+> Version
+  @netlify/build 35.1.2
+​
+> Flags
+  accountId: 68a6d5b7888f5d55e5ec5652
+​
+> Current directory
+  F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main
+​
+> Config file
+  F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\netlify.toml
+​
+> Context
+  production
+​
+> Installing extensions
+   - neon
+​
+> Loading extensions
+   - neon
+​
+build.command from netlify.toml
+────────────────────────────────────────────────────────────────
+​
+$ vite build
+vite v5.4.19 building for production...
+transforming (3) src\main.tsxBrowserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 2233 modules transformed.
+../dist/public/index.html                   2.20 kB │ gzip:   0.86 kB
+../dist/public/assets/index-DSjFyQev.css  112.45 kB │ gzip:  17.19 kB
+../dist/public/assets/index-Cggw-8zx.js   669.76 kB │ gzip: 207.11 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 7.21s
+​
+(build.command completed in 7.6s)
+​
+Functions bundling
+────────────────────────────────────────────────────────────────
+​
+Packaging Functions from netlify\functions directory:
+ - notify.js
+​
+​
+(Functions bundling completed in 245ms)
+
+Deploying to Netlify
+────────────────────────────────────────────────────────────────
+
+Deploy path:        F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\dist
+Functions path:     F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\netlify\functions
+Configuration path: F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\netlify.toml
+
+√ Finished uploading blobs to deploy store
+√ Deploying functions from cache (use --skip-functions-cache to override)
+√ Finished hashing 6 files and 1 functions
+√ CDN requesting 1 files and 0 functions
+√ Finished uploading 1 assets
+√ Deploy is live!
+​
+Netlify Build Complete
+────────────────────────────────────────────────────────────────
+​
+(Netlify Build completed in 19.3s)
+
+🚀 Deploy complete
+────────────────────────────────────────────────────────────────
+
+   ╭──────────────────────────────── ⬥  Draft deploy is live ⬥  ─────────────────────────────────╮
+   │                                                                                             │
+   │   Deployed draft to https://68ad51baa3048c54d649f092--shree-bhargav-portfolio.netlify.app   │
+   │                                                                                             │
+   ╰─────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Build logs:         https://app.netlify.com/projects/shree-bhargav-portfolio/deploys/68ad51baa3048c54d649f092
+Function logs:      https://app.netlify.com/projects/shree-bhargav-portfolio/logs/functions?scope=deploy:68ad51baa3048c54d649f092
+Edge function Logs: https://app.netlify.com/projects/shree-bhargav-portfolio/logs/edge-functions?scope=deployid:68ad51baa3048c54d649f092
+
+If everything looks good on your draft URL, deploy it to your main project URL with the --prod flag:
+netlify deploy --prod
+
+
+F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main>npm run build
+
+> rest-express@1.0.0 build
+> vite build
+
+vite v5.4.19 building for production...
+transforming (3) src\main.tsxBrowserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 2233 modules transformed.
+../dist/public/index.html                   2.20 kB │ gzip:   0.86 kB
+../dist/public/assets/index-DSjFyQev.css  112.45 kB │ gzip:  17.19 kB
+../dist/public/assets/index-Cggw-8zx.js   669.76 kB │ gzip: 207.11 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 10.86s
+
+F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main>netlify deploy --prod
+​
+Netlify Build
+────────────────────────────────────────────────────────────────
+​
+> Version
+  @netlify/build 35.1.2
+​
+> Flags
+  accountId: 68a6d5b7888f5d55e5ec5652
+​
+> Current directory
+  F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main
+​
+> Config file
+  F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\netlify.toml
+​
+> Context
+  production
+​
+> Installing extensions
+   - neon
+​
+> Loading extensions
+   - neon
+​
+build.command from netlify.toml
+────────────────────────────────────────────────────────────────
+​
+$ vite build
+vite v5.4.19 building for production...
+transforming (3) src\main.tsxBrowserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 2233 modules transformed.
+../dist/public/index.html                   2.20 kB │ gzip:   0.86 kB
+../dist/public/assets/index-DSjFyQev.css  112.45 kB │ gzip:  17.19 kB
+../dist/public/assets/index-Cggw-8zx.js   669.76 kB │ gzip: 207.11 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 7.19s
+​
+(build.command completed in 7.6s)
+​
+Functions bundling
+────────────────────────────────────────────────────────────────
+​
+Packaging Functions from netlify\functions directory:
+ - notify.js
+​
+​
+(Functions bundling completed in 246ms)
+
+Deploying to Netlify
+────────────────────────────────────────────────────────────────
+
+Deploy path:        F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\dist
+Functions path:     F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\netlify\functions
+Configuration path: F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\netlify.toml
+
+√ Finished uploading blobs to deploy store
+√ Deploying functions from cache (use --skip-functions-cache to override)
+√ Finished hashing 6 files and 1 functions
+√ CDN requesting 0 files and 0 functions
+√ Finished uploading 0 assets
+√ Deploy is live!
+​
+Netlify Build Complete
+────────────────────────────────────────────────────────────────
+​
+(Netlify Build completed in 19.9s)
+
+🚀 Deploy complete
+────────────────────────────────────────────────────────────────
+
+   ╭──────────────────────────────── ⬥  Production deploy is live ⬥  ─────────────────────────────────╮
+   │                                                                                                  │
+   │             Deployed to production URL: https://shree-bhargav-portfolio.netlify.app              │
+   │                                                                                                  │
+   │       Unique deploy URL: https://68ad51e5a139f929d06f1966--shree-bhargav-portfolio.netlify.app   │
+   │                                                                                                  │
+   ╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Build logs:         https://app.netlify.com/projects/shree-bhargav-portfolio/deploys/68ad51e5a139f929d06f1966
+Function logs:      https://app.netlify.com/projects/shree-bhargav-portfolio/logs/functions
+Edge function Logs: https://app.netlify.com/projects/shree-bhargav-portfolio/logs/edge-functions
+
+F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main>netlify deploy --prod
+​
+Netlify Build
+────────────────────────────────────────────────────────────────
+​
+> Version
+  @netlify/build 35.1.2
+​
+> Flags
+  accountId: 68a6d5b7888f5d55e5ec5652
+​
+> Current directory
+  F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main
+​
+> Config file
+  F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\netlify.toml
+​
+> Context
+  production
+​
+> Installing extensions
+   - neon
+​
+> Loading extensions
+   - neon
+​
+build.command from netlify.toml
+────────────────────────────────────────────────────────────────
+​
+$ npm run build
+
+> rest-express@1.0.0 build
+> vite build
+
+vite v5.4.19 building for production...
+transforming (3) src\main.tsxBrowserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 2233 modules transformed.
+../dist/public/index.html                   2.20 kB │ gzip:   0.86 kB
+../dist/public/assets/index-DSjFyQev.css  112.45 kB │ gzip:  17.19 kB
+../dist/public/assets/index-Cggw-8zx.js   669.76 kB │ gzip: 207.11 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 1m 25s
+​
+(build.command completed in 1m 25.8s)
+​
+Functions bundling
+────────────────────────────────────────────────────────────────
+​
+Packaging Functions from netlify\functions directory:
+ - notify.js
+​
+​
+(Functions bundling completed in 248ms)
+
+Deploying to Netlify
+────────────────────────────────────────────────────────────────
+
+Deploy path:        F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\dist\public
+Functions path:     F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\netlify\functions
+Configuration path: F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main\netlify.toml
+
+√ Finished uploading blobs to deploy store
+√ Deploying functions from cache (use --skip-functions-cache to override)
+√ Finished hashing 5 files and 1 functions
+√ CDN requesting 1 files and 0 functions
+√ Finished uploading 1 assets
+√ Deploy is live!
+​
+Netlify Build Complete
+────────────────────────────────────────────────────────────────
+​
+(Netlify Build completed in 1m 36.8s)
+
+🚀 Deploy complete
+────────────────────────────────────────────────────────────────
+
+   ╭──────────────────────────────── ⬥  Production deploy is live ⬥  ─────────────────────────────────╮
+   │                                                                                                  │
+   │             Deployed to production URL: https://shree-bhargav-portfolio.netlify.app              │
+   │                                                                                                  │
+   │       Unique deploy URL: https://68ad53e9925497e3d98df91a--shree-bhargav-portfolio.netlify.app   │
+   │                                                                                                  │
+   ╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Build logs:         https://app.netlify.com/projects/shree-bhargav-portfolio/deploys/68ad53e9925497e3d98df91a
+Function logs:      https://app.netlify.com/projects/shree-bhargav-portfolio/logs/functions
+Edge function Logs: https://app.netlify.com/projects/shree-bhargav-portfolio/logs/edge-functions
+
+F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main>
+F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main>
+F:\New folder (3)\React Native Projects\Portfolio\personal-portfolio-main>netlify deploy --prod

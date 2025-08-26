@@ -1,0 +1,104 @@
+📖 About Me (Full Version for Portfolio App)
+
+👋 Hi, I’m Shree Bhargav R K, an Android Developer Team Lead from Hosur, Tamil Nadu.
+With over 2 years of experience in building, deploying, and optimizing mobile applications, I specialize in Android development with Java, Kotlin, and Jetpack Compose.
+
+💡 I’m passionate about creating user-centric, high-performance apps, and I enjoy solving complex challenges through clean architecture (MVVM), REST API integrations, and printing solutions (USB/Wi-Fi/PDF).
+
+My journey began as an ERP Intern (SQL/CRM), where I sharpened my database and backend skills. From there, I stepped into Android development, growing into a Freelancer and later leading a 10-member development team as Senior Software Developer at Prematix Software Solutions.
+
+⚡ Beyond coding, I believe in leadership, mentorship, and teamwork — ensuring projects are delivered with quality and efficiency while guiding new developers to grow.
+
+💼 Experience Snapshot
+🚀 Senior Software Developer (Android) – Prematix Software Solutions (2023 – Present)
+
+Leading a 10-member Android team (mentoring, code reviews, planning).
+
+Built and deployed scalable apps using Java, Kotlin, SDKs, Retrofit.
+
+Managed Google Play deployments (APK signing, version control, compliance).
+
+Enhanced apps with unit testing, debugging, and performance tuning.
+
+📱 Freelancing Android Developer – Bnet Global Solutions (2024)
+
+Developed Insurance Policy Apps with real-time quotes, secure payments, and role-based dashboards.
+
+Optimized apps for performance, scalability, and compliance.
+
+Delivered end-to-end support (bug fixing, feature enhancements).
+
+💻 SQL Developer (ERP Intern) – Carborundum Universal Ltd. (2022 – 2023)
+
+Handled ERP troubleshooting, SQL databases, CRM admin.
+
+Worked on front-end/back-end interactions and system admin tasks.
+
+📂 Projects
+
+Retail Application – Multi-platform (mobile, TV, POS), booking + printing via Wi-Fi/USB printers.
+
+Pozo Printer – Android POS printing solution with regex extraction, token-based decryption.
+
+Boating Application – Online booking system with role-based login, offline SQL DB, and HDFC payment gateway.
+
+Insurance Policy Apps (Freelance) – Policy Fynder & POSP apps for policy sales, onboarding, and secure transactions.
+
+AI Drowning Prevention System – Real-time AI for pool safety.
+
+Phishing Detection ML Model – Secured users from online fraud.
+
+Automatic Aquaponics System (IoT) – Arduino-based smart farming solution.
+
+🛠️ Skills
+
+Languages & Frameworks: Java, Kotlin, C, C++, Spring Boot
+Android: Jetpack Compose, MVVM, Retrofit, Room DB, SQLite, Firebase
+Testing: JUnit, Espresso, Cross-platform testing
+Tools: Git, GitHub, GitLab, Jira, Gradle, Android Studio
+Specialties: REST API, Printing (ESC/POS, PCL, Wi-Fi/USB), SDK Integration, PDF Generation
+Other: Adobe Premiere, CorelDraw
+
+🏆 Achievements
+
+Vice President, ISTE (Leadership in technical education initiatives).
+
+Captain, Basketball Team (School & Diploma).
+
+Sergeant, NCC – Discipline, leadership, teamwork.
+
+Rotary Club Leader – 4+ years of service (organized eye camps, marathons, blood donation drives).
+
+🎓 Education
+
+B.E. Computer Science Engineering – Adhiyamaan College of Engineering (CGPA: 7.9).
+
+Diploma in E-Robotics – Er. Perumal Manimekalai College (74%).
+
+📜 Certifications
+
+Full Stack Developer – CADD Centre (2024)
+
+Java, Python, C, C++ Programming – CADD Centre (2023)
+
+Poster Presentation on Oil & Gas Pipelines – Sathyabama (2023)
+
+NCC “B” & “C” Certificates (2020)
+
+Adobe Premiere Suite & CorelDraw (2018)
+
+🌍 Languages
+
+English | Kannada | Hindi | Telugu | Tamil
+
+🎯 Interests
+
+Mobile App Development
+
+Backend (Spring Boot)
+
+Software Architecture & Optimization
+
+UI/UX Design
+
+⚡ This version is ready to be pasted into your portfolio app’s About Me, Experien

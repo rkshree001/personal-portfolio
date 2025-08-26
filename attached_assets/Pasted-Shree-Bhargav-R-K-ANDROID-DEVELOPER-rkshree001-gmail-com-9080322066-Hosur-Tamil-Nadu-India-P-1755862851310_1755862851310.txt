@@ -1,0 +1,177 @@
+Shree Bhargav R K
+ ANDROID DEVELOPER
+ rkshree001@gmail.com 9080322066 Hosur, Tamil Nadu, India
+ Profile
+ Highly skilled Android Developer with over 2 years of experience in designing, 
+developing, and deploying mobile applications. Proficient in Java, Kotlin, and 
+SDK implementation with a strong understanding of MVVM architecture. 
+Expertise in REST API integration, cross-platform testing, and UI/UX 
+optimization. Passionate about enhancing app performance and 
+collaborating in agile environments.
+ Detail-oriented and innovative software engineer adept at tackling complex 
+challenges and driving projects to completion. With a focus on continuous 
+improvement, I leverage my deep technical background and collaborative 
+skills to create high-quality, user-centric solutions that meet both business 
+and customer needs.
+ Work Experience
+ Senior Software Developer (Android 
+Developer)
+ Jul 2023 - Present
+ Prematix Software Solutions, Hosur
+ Lead a team of 10 developers, overseeing code reviews, task 
+assignments, mentoring, and problem-solving to ensure project 
+success.
+ Plan, design, develop, and deploy Android applications using Java, 
+Kotlin, and SDK integrations, ensuring high performance and seamless 
+functionality.
+ Manage Play Store deployment, including release APK generation, 
+version control, and compliance with Google Play guidelines.
+ Enhance application reliability through unit testing, debugging, and 
+performance optimization for a stable and efficient user experience.
+ Streamline team onboarding and knowledge sharing, fostering a 
+collaborative and productive work environment.
+ Collaborate with UI/UX designers to transform wireframes into intuitive, 
+high-performance applications.
+ Freelancing Android Developer Jun 2024 - Dec 2024
+ Bnet Global Solutions, Bengaluru, India
+ Developed an Insurance Policy Buying App from scratch with a user
+friendly UI/UX and robust REST API integration using JSON.
+ Optimized app performance and scalability while ensuring data 
+security compliance.
+ Provided ongoing support, resolving bugs and enhancing features 
+based on user feedback.
+ SQL Developer (ERP Intern) Dec 2022 - Jun 2023
+ Carborundum Universal Limited, Hosur
+ Managed ERP troubleshooting by handling front-end and back-end 
+interactions.
+ Worked with SQL databases and CRM administration.
+ Assisted as a system administrator for ERP platforms.
+ Project Portfolio
+ Retail Application (09/2023 - Present)
+ Developed a multi-platform application for mobile, TV, and POS 
+terminals.
+ Integrated seamless booking and printing functionalities with Wi-Fi & USB 
+thermal printersand Implemented table and chair-level service booking 
+for enhanced user experience.
+ Pozo Printer (03/2024 - Present)
+ Personal details
+ LinkedIn
+ linkedin.com/in/shree-bhargav
+r-k-7b5b1419b
+ Github
+ github.com/rkshree001
+ Skills
+ Java
+ Kotlin
+ RxJava
+ LiveData
+ Coroutines
+ C & C++
+ Android SDK
+ JetPack Compose
+ MVVM Architecture
+ Retrofit
+ JSON
+ SQL
+ SQLite
+ Room DB
+ Firebase Firestore
+ Offline DB
+ REST API integration
+ Spring Boot
+ Unit Testing
+ Cross-Platform Testing
+ JUnit
+ Espresso
+ Git, GitLab, GitHub
+ Jira
+ Android Studio
+ Gradle
+Debugging
+ Designed an Android-based POS printing solution.
+ Implemented regex-based field extraction and secure token-based 
+data decryption and Enabled printing via USB and Wi-Fi thermal printers.
+ Boating Application (01/2024 - Present)
+ Developed an online booking system for TTDC and Kodaikanal 
+Municipality.
+ Integrated role-based login (Super Admin, Admin, User, Public User).
+ Implemented SQL offline database integration and HDFC payment 
+gateway.
+ Insurance Policy Apps (Freelance - 2024)
+ Policy Fynder: Developed an insurance purchasing platform with policy 
+comparison, real-time quotes, and secure payments across multiple 
+insurance modules. Ensured high-performance UI/UX and regulatory 
+compliance.
+ POSP (Tablet & Mobile): Built a POSP app for policy sales and 
+management, integrating quote generation, secure transactions, and 
+multi-category support. Implemented role-based dashboards (Admin, 
+POSP, Super Admin, RM) and designed POSP onboarding with KYC 
+verification.
+ Education
+ B.E. in Computer Science Engineering
+ Adhiyamaan College of Engineering, Hosur
+ CGPA: 7.9
+ AI-Based Child Drowning Prevention System | Main Project (2022 – 
+2023)
+ Developed an AI-powered face recognition system to detect children under 
+five in deep water and alert lifeguards in real-time, enhancing pool safety.
+ Web Phishing Detection Using ML | Mini Project (2021 – 2022)
+ Built a machine learning model to detect phishing websites, preventing 
+online fraud and securing user credentials.
+ Diploma in E-Robotics
+ Er. Perumal Manimekalai College of Engineering, Hosur
+ Percentage: 74%
+ Automatic Aquaponics System Using Arduino | Diploma Project (2019 – 
+2020)
+ Designed an Arduino-based automated aquaponics system to monitor and 
+control water quality, nutrients, and environmental conditions for optimized 
+plant growth.
+ Key Achievements
+ Vice President of ISTE
+ Led key initiatives and organizations as Vice President of the Indian Society 
+for Technical Education at Adhiyamaan College
+ Basketball Team Captain
+ Captain of the Basketball Team in school (2016-2017) and diploma (2018
+2020), showcasing leadership and teamwork skills.
+ Sergeant in National Cadet Corps (NCC)
+ Demonstrating discipline, leadership, and teamwork.
+ Rotary Club Member, Hosur
+ Served for 4+ years, holding leadership roles as Secretary (2+ years) and 
+Vice President (1 year). Actively participated in and organized eye camps, 
+marathons, eye surgeries, blood donation drives, walkathons, and various 
+social welfare events, contributing to community development and event 
+management.
+ POS Integration
+ SDK Implementation
+ Adobe Premiere Suite
+ CorelDraw
+ Languages
+ English
+ Kannada
+ Hindi
+ Telugu
+ Tamil
+ Jun 2020 - Apr 2023
+ Jun 2017 - Apr 2020
+ Interest
+ Mobile Application 
+Development
+ Backend Development (Spring 
+Boot)
+ Software Architecture & 
+Optimization
+ UI/UX Design
+ Certifications
+ Full Stack Developer – CADD 
+Centre & Live Wire, Hosur (
+ 2024)
+ Poster Presentation on 
+Corrosion in Oil & Gas Pipelines – Sathyabama College of 
+Engineering (2023)
+ Java, Python, C, C++ 
+Programming – CADD Centre 
+& Live Wire, Hosur (2023)
+ NCC "C" Certificate - 2020
+ NCC "B" Certificate - 2020
+ Adobe Premiere Suite & 
+CorelDraw - 2018

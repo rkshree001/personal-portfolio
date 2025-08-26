@@ -1,0 +1,60 @@
+ Full Portfolio App Prompts
+1️⃣ Splash Screen
+
+"Create a modern splash screen for my portfolio app with my name Shree Bhargav and title Android Developer Team Lead. Use smooth animation (fade-in or slide-in) with a tech-themed background. Show a short tagline: ‘Building Scalable Apps with Clean Code ✨’. After 2–3 seconds, transition to the home screen."
+
+2️⃣ Home / Dashboard
+
+"Design a Home Screen that introduces me in one glance. Show my profile picture, name, and tagline: ‘Passionate Android Developer | Team Lead | Tech Explorer’. Add quick-access buttons for About Me, Projects, Skills, Resume, Contact. Include icons and a light/dark theme toggle. Make it feel interactive and welcoming."
+
+3️⃣ About Me
+
+*"Create an About Me page that is interactive and engaging. Introduce me as Shree Bhargav 👋, an Android Developer Team Lead with 2+ years of experience (including internship). Use a storytelling format: from intern → Android dev → team lead. Highlight my strengths: Java, Kotlin, Jetpack Compose, APIs, PDF generation, USB/Wi-Fi printing, leadership.
+
+Add interactive chips for skills, a fun fact (I love Harry Potter ⚡ & Marvel 🦸‍♂️), and an ending call-to-action: ‘Let’s build something amazing together 🚀 – check my resume or projects!’ Allow users to toggle between short bio and full bio."*
+
+4️⃣ Projects
+
+"Design a Projects section where each project appears as a card with: project name, description, tech stack, screenshots, and links (GitHub / Live Demo). Example projects: NYC Schools app, Trip Wise Pay, Pozo Retail, Printer Solutions, POS system. Add filters by category (Mobile Apps, Web, Printing Solutions). Make it scrollable with smooth animations."
+
+5️⃣ Skills
+
+"Create a Skills page that shows my expertise as animated skill chips or progress bars. Categories: Programming (Java, Kotlin, SQL), Android Tools (Jetpack Compose, Retrofit, Room, Material Design), Printing (ESC/POS, PCL, Wi-Fi/USB), Leadership & Project Management. Add icons for each skill and a hover/tap interaction that explains how I used it in real apps."
+
+6️⃣ Resume
+
+*"Add a Resume section with two options:
+
+View Resume (embedded PDF viewer inside app)
+
+Download Resume (button to download resume.pdf)
+
+Make it clean with a header: ‘My Journey in One Page 📄’. Include a QR code option that links to my resume for quick sharing."*
+
+7️⃣ Contact
+
+*"Build a Contact page with:
+
+Email (click → open mail app)
+
+LinkedIn (click → open profile)
+
+GitHub (click → open repos)
+
+Optional contact form (Name, Email, Message → send to my email).
+
+Add fun icons, a background animation, and a thank-you note: ‘Thanks for visiting my portfolio! Let’s connect 🤝’."*
+
+8️⃣ Extra Engaging Features
+
+*"Make the portfolio app interactive with:
+
+Dark/Light mode toggle 🌙☀️
+
+Smooth animations when navigating
+
+Project search/filter bar
+
+Fun Easter eggs (tap Harry Potter wand → spark animation, tap Iron Man mask → arc reactor glow)
+
+Floating button to download resume anytime 📂"*

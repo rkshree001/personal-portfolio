@@ -1,0 +1,49 @@
+✨ Full Prompt for About Me (Interactive & Engaging)
+
+*"Create an About Me section for my personal portfolio app that is interactive, engaging, and professional. It should introduce me as an Android Developer Team Lead with 2 years of experience (including internship). Highlight my expertise in Android (Java, Kotlin, Jetpack Compose, Retrofit, Room, Material Design, API integration, USB/Wi-Fi printing, PDF generation), leadership skills, and problem-solving approach.
+
+The section should include:
+
+A friendly greeting (e.g., Hi, I’m Shree Bhargav 👋).
+
+A short intro tagline like: 'Passionate Android Developer | Team Lead | Tech Explorer.'
+
+A storytelling format about my journey (from intern → Android dev → Team lead).
+
+Highlights of skills shown as interactive chips/tags (Java | Kotlin | Android | REST APIs | Printing Solutions | PDF Generation | SQL | Leadership).
+
+Achievements (built multiple apps like NYC Schools app, Trip Wise Pay, Pozo Retail & Printer apps, Retail POS, etc.).
+
+Philosophy: user-first design, clean code, and performance-focused apps.
+
+An interactive fun fact (e.g., “When I’m not coding, I love exploring magical worlds like Harry Potter ⚡ & Marvel 🦸‍♂️”).
+
+A call-to-action at the end: ‘Let’s build something amazing together 🚀 – download my resume or check out my projects!’
+
+Make the section visually attractive with animations, icons, and an option to switch between a short bio and a detailed bio (toggle). Keep it modern, friendly, and memorable."*
+
+🔥 Example Flow (How It Will Look in the App)
+
+👋 Hi, I’m Shree Bhargav
+Passionate Android Developer | Team Lead | Tech Explorer
+
+💡 My Journey
+From an intern exploring ERP & SQL → to Android Developer → now Team Lead guiding projects until 2026.
+
+🛠️ What I Do
+I specialize in building Android apps with Java | Kotlin | Jetpack Compose | Retrofit | Room | Material3.
+Worked on NYC Schools, Trip Wise Pay, Pozo Retail, POS & Printer apps.
+
+🏆 Achievements
+
+Reduced app load times from 12s → 4s.
+
+Built USB/Wi-Fi printing solutions.
+
+Designed interactive expense tracker & travel apps.
+
+🌍 Beyond Work
+When not coding, I dive into Harry Potter ⚡ & Marvel 🦸‍♂️ adventures.
+
+📂 Next Step
+[Download Resume 📄] [View Projects 🚀]
