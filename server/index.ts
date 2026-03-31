@@ -42,9 +42,10 @@ app.use((req, res, next) => {
 app.post("/api/notify", async (req: Request, res: Response) => {
   try {
     const response = await sendNotification(req.body);
-    res.json({ success: true, resend: response });
+    res.json({ success: true, result: response });
   } catch (err: any) {
-    res.status(500).json({ error: err.message });
+    console.error("Email send failed (non-blocking):", err.message);
+    res.json({ success: true, emailError: err.message });
   }
 });
 

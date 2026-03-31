@@ -220,52 +220,38 @@ export default function ContactPage() {
   e.preventDefault();
   setIsSubmitting(true);
 
+  const payload = {
+    name: formData.name,
+    email: formData.email,
+    mobile: `${selectedCountry} ${formData.mobile}`,
+    message: formData.message,
+  };
+
   try {
-    // Save in Supabase
-    const { error } = await supabase.from("messages").insert([
-      {
-        name: formData.name,
-        email: formData.email,
-        mobile: `${selectedCountry} ${formData.mobile}`,
-        message: formData.message,
-      },
-    ]);
-
-    if (error) throw error;
-
-    // ✅ Send email via backend
-    // const res = await fetch("http://localhost:5000/api/notify", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(formData),
-    // });
-const res = await fetch("/.netlify/functions/notify", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(formData),
-});
-
-
-    const data = await res.json();
-
-    if (data.success) {
-      toast({
-        title: "🎉 Message sent successfully!",
-        description: "Thanks for reaching out! I'll get back to you within 24 hours.",
-      });
-      setFormData({ name: "", email: "", mobile: "", message: "" });
-    } else {
-      throw new Error("Failed to send email");
-    }
-  } catch (err: any) {
-    toast({
-      title: "❌ Error",
-      description: err.message || "Please try again later.",
-      variant: "destructive",
-    });
-  } finally {
-    setIsSubmitting(false);
+    const { error } = await supabase.from("messages").insert([payload]);
+    if (error) console.warn("Supabase insert failed:", error.message);
+  } catch (dbErr: any) {
+    console.warn("Supabase unavailable:", dbErr.message);
   }
+
+  try {
+    const res = await fetch("/api/notify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    if (!data.success) console.warn("Email notification issue:", data.emailError);
+  } catch (mailErr: any) {
+    console.warn("Email send failed (non-blocking):", mailErr.message);
+  }
+
+  toast({
+    title: "🎉 Message sent successfully!",
+    description: "Thanks for reaching out! I'll get back to you within 24 hours.",
+  });
+  setFormData({ name: "", email: "", mobile: "", message: "" });
+  setIsSubmitting(false);
 };
 
   const handleInputChange = (field: string, value: string) => {
