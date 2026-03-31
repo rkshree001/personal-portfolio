@@ -39,11 +39,13 @@ Preferred communication style: Simple, everyday language.
 - **Database Provider**: Configured for Neon Database serverless PostgreSQL
 
 ### UI/UX Design Patterns
-- **Design System**: Consistent color palette with primary blue (#3b82f6), secondary violet, and accent colors
+- **Design System**: Clean, professional aesthetic with primary blue (#3b82f6) accents on white/slate backgrounds
 - **Typography**: Inter font family with serif and monospace alternatives
 - **Layout**: Responsive grid layouts with mobile-first design approach
-- **Navigation**: Fixed header navigation with smooth scrolling and active state indicators
-- **Animations**: Entrance animations, hover effects, and interactive Easter eggs for Harry Potter and Marvel references
+- **Navigation**: Minimal fixed header with simple text links, active state highlight, dark mode toggle, and "Hire Me" CTA button
+- **About Page**: Tab-based layout with four sections — Overview, Experience, Education, Personal — instead of a long scroll
+- **Home Page**: Professional hero layout with bold name, role, location, stats strip, expertise cards, and CTA section
+- **Animations**: Subtle entrance animations via Framer Motion; Easter eggs for Harry Potter and Marvel references preserved in About > Personal tab
 
 ### Component Architecture
 - **Layout Components**: Reusable navigation header and footer with social links
