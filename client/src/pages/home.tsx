@@ -13,8 +13,9 @@ const quickAccessCards = [
     label: "About Me", 
     href: "/about", 
     color: "text-blue-600", 
-    bgColor: "bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900",
-    hoverColor: "hover:from-blue-100 hover:to-blue-200 dark:hover:from-blue-900 dark:hover:to-blue-800",
+    bgColor: "bg-gradient-to-br from-blue-50 to-blue-100",
+    hoverColor: "hover:from-blue-100 hover:to-blue-200",
+    glow: "shadow-blue-200/60",
     description: "My journey & story"
   },
   { 
@@ -22,8 +23,9 @@ const quickAccessCards = [
     label: "Projects", 
     href: "/projects", 
     color: "text-violet-600", 
-    bgColor: "bg-gradient-to-br from-violet-50 to-violet-100 dark:from-violet-950 dark:to-violet-900",
-    hoverColor: "hover:from-violet-100 hover:to-violet-200 dark:hover:from-violet-900 dark:hover:to-violet-800",
+    bgColor: "bg-gradient-to-br from-violet-50 to-violet-100",
+    hoverColor: "hover:from-violet-100 hover:to-violet-200",
+    glow: "shadow-violet-200/60",
     description: "11+ amazing apps"
   },
   { 
@@ -31,8 +33,9 @@ const quickAccessCards = [
     label: "Skills", 
     href: "/skills", 
     color: "text-emerald-600", 
-    bgColor: "bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950 dark:to-emerald-900",
-    hoverColor: "hover:from-emerald-100 hover:to-emerald-200 dark:hover:from-emerald-900 dark:hover:to-emerald-800",
+    bgColor: "bg-gradient-to-br from-emerald-50 to-emerald-100",
+    hoverColor: "hover:from-emerald-100 hover:to-emerald-200",
+    glow: "shadow-emerald-200/60",
     description: "Tech expertise"
   },
   { 
@@ -40,8 +43,9 @@ const quickAccessCards = [
     label: "Contact", 
     href: "/contact", 
     color: "text-rose-600", 
-    bgColor: "bg-gradient-to-br from-rose-50 to-rose-100 dark:from-rose-950 dark:to-rose-900",
-    hoverColor: "hover:from-rose-100 hover:to-rose-200 dark:hover:from-rose-900 dark:hover:to-rose-800",
+    bgColor: "bg-gradient-to-br from-rose-50 to-rose-100",
+    hoverColor: "hover:from-rose-100 hover:to-rose-200",
+    glow: "shadow-rose-200/60",
     description: "Let's connect!"
   },
 ];
@@ -88,7 +92,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/30 to-violet-50/50 dark:from-slate-950 dark:via-blue-950/30 dark:to-violet-950/50" data-testid="home-page">
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/40 to-violet-50/60" data-testid="home-page">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Large gradient blobs */}
@@ -308,9 +312,9 @@ export default function HomePage() {
                   transition={{ duration: 0.6, delay: 1.4 + index * 0.1 }}
                   whileHover={{ y: -5, scale: 1.05 }}
                 >
-                  <Card className="text-center p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300">
+                  <Card className="text-center p-6 bg-white/90 backdrop-blur-sm border border-blue-100 shadow-xl hover:shadow-2xl hover:border-blue-200 transition-all duration-300">
                     <motion.div
-                      className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-br from-blue-100 to-violet-100 dark:from-blue-900 dark:to-violet-900 flex items-center justify-center"
+                      className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-br from-blue-100 to-violet-100 flex items-center justify-center"
                       animate={{ rotate: [0, 5, -5, 0] }}
                       transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
                     >
@@ -357,7 +361,7 @@ export default function HomePage() {
                     
                     {/* Icon container */}
                     <motion.div 
-                      className="w-16 h-16 mx-auto mb-4 rounded-xl bg-white/50 dark:bg-slate-800/50 flex items-center justify-center group-hover:scale-110 transition-all duration-300 relative z-10 shadow-lg"
+                      className="w-16 h-16 mx-auto mb-4 rounded-xl bg-white/60 flex items-center justify-center group-hover:scale-110 transition-all duration-300 relative z-10 shadow-lg"
                       whileHover={{ rotate: 5 }}
                     >
                       <card.icon className={`h-8 w-8 ${card.color}`} />
