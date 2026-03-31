@@ -1,23 +1,14 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { aboutMe, personalInfo } from "@/data/portfolio-data";
 import { useToast } from "@/hooks/use-toast";
-import {
-  Download,
-  Building2,
-  GraduationCap,
-  Briefcase,
-  User,
-  MapPin,
-  Calendar,
-  ExternalLink,
-} from "lucide-react";
+import { Download, Code, Sparkles, User, GraduationCap, Briefcase, Building2 } from "lucide-react";
+import { Link } from "wouter";
 
-const TABS = ["Overview", "Experience", "Education", "Personal"] as const;
-type Tab = typeof TABS[number];
+const skillChips = ["Java", "Kotlin", "Android", "REST APIs", "Printing Solutions", "PDF Generation", "SQL", "Leadership"];
 
 const fullWorkExperience = [
   {
@@ -25,8 +16,9 @@ const fullWorkExperience = [
     company: "Pozomind Technologies Pvt Ltd",
     location: "Hosur, Tamil Nadu",
     duration: "Sep 2025 – Present",
+    type: "work",
+    color: "from-violet-500 to-purple-600",
     badge: "Current",
-    badgeColor: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
     points: [
       "Leading a team of 8 Android developers, ensuring 99% crash-free stability",
       "Architected scalable apps using Kotlin, Jetpack Compose & MVVM",
@@ -39,8 +31,9 @@ const fullWorkExperience = [
     company: "Prematix Software Solutions",
     location: "Hosur, Tamil Nadu",
     duration: "Jul 2023 – Aug 2025",
+    type: "work",
+    color: "from-blue-500 to-cyan-600",
     badge: "",
-    badgeColor: "",
     points: [
       "Developed high-scale Android apps using Kotlin, Java, MVVM & Jetpack",
       "Built advanced POS/Thermal Printer modules (USB/Wi-Fi) with ESC/POS",
@@ -53,8 +46,9 @@ const fullWorkExperience = [
     company: "Carborundum Universal Limited",
     location: "Hosur, Tamil Nadu",
     duration: "Dec 2022 – Jun 2023",
+    type: "work",
+    color: "from-emerald-500 to-teal-600",
     badge: "",
-    badgeColor: "",
     points: [
       "Handled ERP troubleshooting, SQL scripting & CRM workflows",
       "Managed front-end and back-end ERP interactions",
@@ -70,6 +64,8 @@ const educationTimeline = [
     location: "Hosur, Tamil Nadu",
     duration: "Aug 2018 – Jun 2021",
     grade: "CGPA: 7.9",
+    type: "college",
+    color: "from-orange-500 to-rose-500",
     highlights: [
       "Vice President of ISTE Chapter",
       "Final Year Project: AI-Based Child Drowning Prevention System",
@@ -82,6 +78,8 @@ const educationTimeline = [
     location: "Hosur, Tamil Nadu",
     duration: "Aug 2016 – Jun 2018",
     grade: "74%",
+    type: "diploma",
+    color: "from-amber-500 to-orange-500",
     highlights: [
       "Project: Automatic Aquaponics System Using Arduino",
       "Basketball Team Captain",
@@ -89,291 +87,370 @@ const educationTimeline = [
     ],
   },
   {
-    degree: "Secondary Education (SSLC)",
+    degree: "School – Secondary Education",
     institution: "High School, Hosur",
     location: "Hosur, Tamil Nadu",
     duration: "Up to 2016",
     grade: "",
+    type: "school",
+    color: "from-pink-500 to-rose-500",
     highlights: [
-      "Basketball Team Captain",
+      "Basketball Team Captain – School team (2016–2017)",
       "NCC Cadet – earned 'B' & 'C' Certificates",
       "Active in sports and extracurricular leadership",
     ],
   },
 ];
 
-const personalInterests = [
-  { label: "Harry Potter Fan", emoji: "🪄", description: "Avid reader of the entire HP series — finding magic in code too." },
-  { label: "Marvel Enthusiast", emoji: "🦸‍♂️", description: "Heroes are made by the paths they choose. Iron Man is a personal icon." },
-  { label: "Basketball", emoji: "🏀", description: "Team captain at school and diploma levels. Sport built my leadership instincts." },
-  { label: "NCC Sergeant", emoji: "🎖️", description: "Earned 'B' & 'C' certificates in National Cadet Corps." },
-  { label: "Rotary Club Leader", emoji: "🌍", description: "4+ years of community service and youth leadership programs." },
-];
-
 export default function AboutPage() {
-  const [activeTab, setActiveTab] = useState<Tab>("Overview");
+  const [bioExpanded, setBioExpanded] = useState(false);
+  const [sparkleEffect, setSparkleEffect] = useState(false);
+  const [arcReactorEffect, setArcReactorEffect] = useState(false);
   const { toast } = useToast();
 
   const downloadResume = () => {
-    const link = document.createElement("a");
-    link.href = "/resume.pdf";
-    link.download = "Shree_Bhargav_RK_Resume.pdf";
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Shree_Bhargav_RK_Resume.pdf';
     link.click();
-    toast({ title: "Download started", description: "Your resume download should begin shortly." });
+    
+    toast({
+      title: "Resume download started! 📄",
+      description: "Your download should begin shortly.",
+    });
+  };
+
+  const triggerHarryPotterEgg = () => {
+    setSparkleEffect(true);
+    toast({
+      title: "✨ Expelliarmus!",
+      description: "Magic is everywhere in coding! ⚡",
+    });
+    setTimeout(() => setSparkleEffect(false), 1000);
+  };
+
+  const triggerMarvelEgg = () => {
+    setArcReactorEffect(true);
+    toast({
+      title: "🦸‍♂️ I am Iron Man!",
+      description: "Heroes are made by the paths they choose 🚀",
+    });
+    setTimeout(() => setArcReactorEffect(false), 1000);
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 pt-24 pb-16 px-4" data-testid="about-page">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen py-24 px-4 bg-gradient-to-br from-blue-50 via-violet-50/30 to-orange-50/50 dark:from-blue-950/30 dark:via-violet-950/30 dark:to-orange-950/30 relative overflow-hidden" data-testid="about-page">
+      {/* Enhanced Background Animation */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="mb-10"
-          initial={{ opacity: 0, y: 20 }}
+          className="absolute top-40 -left-20 w-64 h-64 bg-gradient-to-br from-blue-400/10 to-violet-400/10 rounded-full blur-3xl"
+          animate={{ x: [0, 60, 0], y: [0, -30, 0], scale: [1, 1.2, 1] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-40 -right-20 w-72 h-72 bg-gradient-to-br from-orange-400/10 to-pink-400/10 rounded-full blur-3xl"
+          animate={{ x: [0, -50, 0], y: [0, 40, 0], scale: [1.1, 1, 1.1] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-2" data-testid="about-title">
-            About Me
-          </h1>
-          <p className="text-slate-500 dark:text-slate-400 text-lg" data-testid="about-subtitle">
-            Android Developer Team Lead · Hosur, Tamil Nadu
+          <motion.div
+            className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-violet-600 rounded-full mb-6 shadow-2xl"
+            animate={{ rotate: [0, 5, -5, 0], scale: [1, 1.1, 1] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <User className="w-8 h-8 text-white" />
+          </motion.div>
+          
+          <h2 className="text-4xl md:text-6xl font-bold mb-6" data-testid="about-title">
+            <span className="text-4xl md:text-6xl mr-3">👋</span>
+            <span className="bg-gradient-to-r from-blue-600 via-violet-600 to-orange-600 bg-clip-text text-transparent">Hi, I'm Shree Bhargav</span>
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto" data-testid="about-subtitle">
+            {personalInfo.tagline}
           </p>
         </motion.div>
 
-        <div className="border-b border-slate-200 dark:border-slate-800 mb-10">
-          <div className="flex gap-1 -mb-px overflow-x-auto">
-            {TABS.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-5 py-3 text-sm font-medium border-b-2 transition-colors whitespace-nowrap ${
-                  activeTab === tab
-                    ? "border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400"
-                    : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-slate-600"
-                }`}
+        {/* Bio + Skills Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {/* Professional Journey */}
+          <motion.div
+            className="lg:col-span-2"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <Card className="p-8 border-0 shadow-2xl bg-gradient-to-br from-white via-blue-50/30 to-violet-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-violet-950/30 relative overflow-hidden h-full" data-testid="journey-card">
+              <div className="absolute inset-0 overflow-hidden">
+                <motion.div
+                  className="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/10 rounded-full"
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                />
+              </div>
+              
+              <h3 className="text-3xl font-bold mb-6 flex items-center gap-3 relative z-10">
+                <span className="text-3xl">💡</span>
+                <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">My Journey</span>
+              </h3>
+              <div className="text-muted-foreground space-y-4" data-testid="bio-content">
+                {bioExpanded ? (
+                  <div className="space-y-4">
+                    {aboutMe.fullBio.map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {aboutMe.shortBio.map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <Button
+                variant="link"
+                onClick={() => setBioExpanded(!bioExpanded)}
+                className="mt-4 p-0 h-auto text-primary hover:text-primary/80"
+                data-testid="bio-toggle"
               >
-                {tab}
-              </button>
-            ))}
-          </div>
+                {bioExpanded ? "← Show Less" : "Read Full Story →"}
+              </Button>
+
+              <motion.div
+                className="flex justify-center space-x-8 mt-6 pt-4 border-t border-dashed border-blue-200 dark:border-blue-800"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <motion.div
+                  className="cursor-pointer text-center group"
+                  onClick={triggerHarryPotterEgg}
+                  animate={sparkleEffect ? { scale: [1, 1.2, 1] } : {}}
+                  transition={{ duration: 0.6 }}
+                  data-testid="harry-potter-egg"
+                >
+                  <motion.span
+                    className="text-4xl block mb-2 group-hover:scale-110 transition-transform"
+                    animate={sparkleEffect ? { rotate: [0, 15, -15, 0] } : {}}
+                  >
+                    🪄
+                  </motion.span>
+                  <p className="text-sm text-muted-foreground font-medium">Harry Potter Fan</p>
+                </motion.div>
+                
+                <motion.div
+                  className="cursor-pointer text-center group"
+                  onClick={triggerMarvelEgg}
+                  animate={arcReactorEffect ? { scale: [1, 1.2, 1] } : {}}
+                  transition={{ duration: 0.6 }}
+                  data-testid="marvel-egg"
+                >
+                  <motion.span
+                    className="text-4xl block mb-2 group-hover:scale-110 transition-transform"
+                    animate={arcReactorEffect ? { boxShadow: ["0 0 10px rgba(59,130,246,0.5)", "0 0 30px rgba(59,130,246,0.8)", "0 0 10px rgba(59,130,246,0.5)"] } : {}}
+                    style={{ borderRadius: "50%" }}
+                  >
+                    🦸‍♂️
+                  </motion.span>
+                  <p className="text-sm text-muted-foreground font-medium">Marvel Enthusiast</p>
+                </motion.div>
+              </motion.div>
+            </Card>
+          </motion.div>
+
+          {/* What I Do */}
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Card className="p-6 border-0 shadow-2xl bg-gradient-to-br from-white via-violet-50/30 to-orange-50/30 dark:from-slate-900 dark:via-violet-950/30 dark:to-orange-950/30" data-testid="skills-card">
+              <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                <span className="text-2xl">🛠️</span>
+                <span className="text-violet-600">What I Do</span>
+              </h3>
+              <p className="text-muted-foreground mb-4">
+                I specialize in building Android apps with modern technologies and leading development teams to success.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-4" data-testid="skill-chips">
+                {skillChips.map((skill) => (
+                  <Badge key={skill} variant="secondary" className="cursor-pointer hover:scale-105 transition-transform">
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                🏆 Key Achievements:
+              </h4>
+              <ul className="space-y-2 text-muted-foreground text-sm mb-6">
+                <li>• Leading team of 8 developers at Pozomind Technologies</li>
+                <li>• Built Pozo Retail, Printer SDK, Boating & Insurance apps</li>
+                <li>• Improved cold-start performance by 40%</li>
+                <li>• Designed USB/Wi-Fi ESC/POS printing solutions</li>
+              </ul>
+
+              <div className="border-t border-dashed border-violet-200 dark:border-violet-800 pt-4">
+                <h4 className="text-lg font-semibold mb-2 flex items-center gap-2 text-emerald-600">
+                  🌍 Philosophy
+                </h4>
+                <p className="text-muted-foreground text-sm">
+                  {aboutMe.philosophy}
+                </p>
+              </div>
+            </Card>
+
+            <Card className="p-6 text-center border-0 shadow-xl bg-gradient-to-r from-blue-50 to-violet-50 dark:from-blue-950/20 dark:to-violet-950/20" data-testid="cta-card">
+              <p className="text-lg font-medium mb-4 flex items-center justify-center gap-2">
+                Let's build something amazing together <Sparkles className="w-5 h-5" />
+              </p>
+              <div className="flex justify-center space-x-4">
+                <Button onClick={downloadResume} data-testid="download-resume-about">
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Resume
+                </Button>
+                <Button variant="secondary" asChild data-testid="view-projects-about">
+                  <Link href="/projects">
+                    <Code className="mr-2 h-4 w-4" />
+                    View Projects
+                  </Link>
+                </Button>
+              </div>
+            </Card>
+          </motion.div>
         </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.3 }}
-          >
-            {activeTab === "Overview" && (
-              <div className="grid md:grid-cols-3 gap-8">
-                <div className="md:col-span-2 space-y-6">
-                  <div>
-                    <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Professional Summary</h2>
-                    <div className="space-y-3 text-slate-600 dark:text-slate-400 leading-relaxed" data-testid="bio-content">
-                      {aboutMe.fullBio.slice(0, 4).map((paragraph, index) => (
-                        <p key={index}>{paragraph}</p>
-                      ))}
-                    </div>
+        {/* Work Experience Timeline */}
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-3 mb-3">
+              <Briefcase className="w-7 h-7 text-blue-600" />
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
+                Work Experience
+              </h3>
+            </div>
+            <p className="text-muted-foreground">My professional journey so far</p>
+          </div>
+
+          <div className="relative">
+            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 via-violet-400 to-emerald-400 transform md:-translate-x-px" />
+
+            <div className="space-y-8">
+              {fullWorkExperience.map((job, index) => (
+                <motion.div
+                  key={index}
+                  className={`relative flex items-start gap-6 md:gap-0 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 * index }}
+                >
+                  {/* Timeline dot */}
+                  <div className="absolute left-6 md:left-1/2 w-4 h-4 rounded-full border-2 border-white dark:border-slate-900 shadow-md transform -translate-x-1.5 md:-translate-x-2 mt-5 z-10"
+                    style={{ background: `linear-gradient(135deg, ${job.color.includes("violet") ? "#8b5cf6,#7c3aed" : job.color.includes("blue") ? "#3b82f6,#0891b2" : "#10b981,#0d9488"})` }} />
+
+                  {/* Card */}
+                  <div className={`ml-12 md:ml-0 md:w-5/12 ${index % 2 === 0 ? "md:mr-auto md:pr-10" : "md:ml-auto md:pl-10"}`}>
+                    <Card className="p-6 border-0 shadow-xl bg-white dark:bg-slate-900 hover:shadow-2xl transition-shadow">
+                      <div className="flex items-start justify-between mb-3 flex-wrap gap-2">
+                        <div>
+                          <h4 className="font-bold text-lg text-slate-900 dark:text-white leading-tight">{job.title}</h4>
+                          <div className="flex items-center gap-2 mt-1">
+                            <Building2 className="w-4 h-4 text-blue-500 shrink-0" />
+                            <span className="text-blue-600 dark:text-blue-400 font-medium text-sm">{job.company}</span>
+                          </div>
+                        </div>
+                        {job.badge && (
+                          <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 shrink-0">
+                            {job.badge}
+                          </Badge>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
+                        <span className="flex items-center gap-1">📅 {job.duration}</span>
+                        <span className="flex items-center gap-1">📍 {job.location}</span>
+                      </div>
+                      <ul className="space-y-1.5">
+                        {job.points.map((point, i) => (
+                          <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                            <span className="text-blue-500 mt-0.5 shrink-0">•</span>
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                    </Card>
                   </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
 
-                  <div>
-                    <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Philosophy</h2>
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed italic border-l-4 border-blue-200 dark:border-blue-800 pl-4">
-                      "{aboutMe.philosophy}"
-                    </p>
+        {/* Education Timeline */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-3 mb-3">
+              <GraduationCap className="w-7 h-7 text-orange-500" />
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-rose-500 bg-clip-text text-transparent">
+                Education
+              </h3>
+            </div>
+            <p className="text-muted-foreground">My academic foundation and school life</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {educationTimeline.map((edu, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.15 * index }}
+              >
+                <Card className="p-6 border-0 shadow-xl bg-white dark:bg-slate-900 hover:shadow-2xl transition-all hover:-translate-y-1 h-full">
+                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${edu.color} mb-4 shadow-lg`}>
+                    <GraduationCap className="w-6 h-6 text-white" />
                   </div>
-                </div>
-
-                <div className="space-y-5">
-                  <Card className="p-5 border border-slate-200 dark:border-slate-800 shadow-none">
-                    <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-4 uppercase tracking-wide">Quick Info</h3>
-                    <dl className="space-y-3">
-                      <div>
-                        <dt className="text-xs text-slate-400 uppercase tracking-wide mb-0.5">Role</dt>
-                        <dd className="text-sm text-slate-700 dark:text-slate-300 font-medium">{personalInfo.title}</dd>
-                      </div>
-                      <div>
-                        <dt className="text-xs text-slate-400 uppercase tracking-wide mb-0.5">Location</dt>
-                        <dd className="text-sm text-slate-700 dark:text-slate-300 flex items-center gap-1">
-                          <MapPin className="h-3 w-3" /> {personalInfo.location}
-                        </dd>
-                      </div>
-                      <div>
-                        <dt className="text-xs text-slate-400 uppercase tracking-wide mb-0.5">Experience</dt>
-                        <dd className="text-sm text-slate-700 dark:text-slate-300">{personalInfo.experience}</dd>
-                      </div>
-                      <div>
-                        <dt className="text-xs text-slate-400 uppercase tracking-wide mb-0.5">Email</dt>
-                        <dd className="text-sm text-blue-600 dark:text-blue-400">
-                          <a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a>
-                        </dd>
-                      </div>
-                    </dl>
-                  </Card>
-
-                  <Card className="p-5 border border-slate-200 dark:border-slate-800 shadow-none">
-                    <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-3 uppercase tracking-wide">Core Skills</h3>
-                    <div className="flex flex-wrap gap-1.5">
-                      {["Kotlin", "Java", "Android SDK", "Jetpack Compose", "MVVM", "REST APIs", "ESC/POS", "SQL", "Team Leadership"].map((skill) => (
-                        <Badge key={skill} variant="secondary" className="text-xs font-normal">{skill}</Badge>
-                      ))}
-                    </div>
-                  </Card>
-
-                  <Button onClick={downloadResume} className="w-full bg-blue-600 hover:bg-blue-700 text-white" data-testid="download-resume-about">
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Resume
-                  </Button>
-                </div>
-              </div>
-            )}
-
-            {activeTab === "Experience" && (
-              <div className="space-y-6">
-                <div className="flex items-center justify-between mb-2">
-                  <h2 className="text-lg font-semibold text-slate-900 dark:text-white">Work Experience</h2>
-                  <span className="text-sm text-slate-400">{fullWorkExperience.length} positions</span>
-                </div>
-                <div className="space-y-4">
-                  {fullWorkExperience.map((job, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: index * 0.08 }}
-                    >
-                      <Card className="p-6 border border-slate-200 dark:border-slate-800 shadow-none hover:border-blue-200 dark:hover:border-blue-800 transition-colors">
-                        <div className="flex items-start justify-between flex-wrap gap-3 mb-3">
-                          <div>
-                            <h3 className="font-semibold text-slate-900 dark:text-white mb-1">{job.title}</h3>
-                            <div className="flex items-center gap-2 text-sm">
-                              <Building2 className="h-3.5 w-3.5 text-blue-500" />
-                              <span className="text-blue-600 dark:text-blue-400 font-medium">{job.company}</span>
-                            </div>
-                          </div>
-                          <div className="flex items-center gap-2 flex-wrap">
-                            {job.badge && (
-                              <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${job.badgeColor}`}>
-                                {job.badge}
-                              </span>
-                            )}
-                            <span className="text-xs text-slate-400 flex items-center gap-1">
-                              <Calendar className="h-3 w-3" /> {job.duration}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="text-xs text-slate-400 flex items-center gap-1 mb-4">
-                          <MapPin className="h-3 w-3" /> {job.location}
-                        </div>
-                        <ul className="space-y-2">
-                          {job.points.map((point, i) => (
-                            <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-                              <span className="text-blue-500 mt-1 shrink-0 text-xs">•</span>
-                              {point}
-                            </li>
-                          ))}
-                        </ul>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {activeTab === "Education" && (
-              <div className="space-y-6">
-                <div className="flex items-center justify-between mb-2">
-                  <h2 className="text-lg font-semibold text-slate-900 dark:text-white">Academic Background</h2>
-                  <span className="text-sm text-slate-400">{educationTimeline.length} institutions</span>
-                </div>
-                <div className="space-y-4">
-                  {educationTimeline.map((edu, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: index * 0.08 }}
-                    >
-                      <Card className="p-6 border border-slate-200 dark:border-slate-800 shadow-none hover:border-blue-200 dark:hover:border-blue-800 transition-colors">
-                        <div className="flex items-start gap-4">
-                          <div className="w-10 h-10 rounded-lg bg-orange-50 dark:bg-orange-950/50 border border-orange-200 dark:border-orange-800 flex items-center justify-center shrink-0">
-                            <GraduationCap className="h-5 w-5 text-orange-600 dark:text-orange-400" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-start justify-between flex-wrap gap-2 mb-1">
-                              <h3 className="font-semibold text-slate-900 dark:text-white leading-snug">{edu.degree}</h3>
-                              {edu.grade && (
-                                <Badge variant="outline" className="text-xs shrink-0">{edu.grade}</Badge>
-                              )}
-                            </div>
-                            <p className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-1">{edu.institution}</p>
-                            <div className="flex items-center gap-3 text-xs text-slate-400 mb-4">
-                              <span className="flex items-center gap-1"><MapPin className="h-3 w-3" />{edu.location}</span>
-                              <span className="flex items-center gap-1"><Calendar className="h-3 w-3" />{edu.duration}</span>
-                            </div>
-                            <ul className="space-y-1.5">
-                              {edu.highlights.map((h, i) => (
-                                <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-                                  <span className="text-orange-500 mt-1 shrink-0 text-xs">✦</span>
-                                  {h}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {activeTab === "Personal" && (
-              <div className="space-y-8">
-                <div>
-                  <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Beyond the Code</h2>
-                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-2xl">
-                    Outside of engineering, I'm shaped by stories, sport, and service. Here's what makes me, me.
-                  </p>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {personalInterests.map((item, index) => (
-                    <motion.div
-                      key={item.label}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: index * 0.08 }}
-                    >
-                      <Card className="p-5 border border-slate-200 dark:border-slate-800 shadow-none hover:border-slate-300 dark:hover:border-slate-700 transition-colors h-full">
-                        <div className="flex items-start gap-3">
-                          <span className="text-2xl">{item.emoji}</span>
-                          <div>
-                            <h3 className="font-medium text-slate-900 dark:text-white mb-1">{item.label}</h3>
-                            <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{item.description}</p>
-                          </div>
-                        </div>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
-
-                <Card className="p-6 border border-slate-200 dark:border-slate-800 shadow-none bg-slate-50 dark:bg-slate-900/50">
-                  <h3 className="font-semibold text-slate-900 dark:text-white mb-3">A Few Fun Facts</h3>
-                  <ul className="space-y-2">
-                    {aboutMe.funFacts.map((fact, i) => (
-                      <li key={i} className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
-                        {fact}
+                  <h4 className="font-bold text-base text-slate-900 dark:text-white leading-snug mb-1">{edu.degree}</h4>
+                  <p className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-1">{edu.institution}</p>
+                  <p className="text-xs text-muted-foreground mb-1">📍 {edu.location}</p>
+                  <div className="flex items-center gap-3 mb-4 flex-wrap">
+                    <span className="text-xs text-muted-foreground">📅 {edu.duration}</span>
+                    {edu.grade && (
+                      <Badge variant="outline" className="text-xs">{edu.grade}</Badge>
+                    )}
+                  </div>
+                  <ul className="space-y-1.5">
+                    {edu.highlights.map((h, i) => (
+                      <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                        <span className="text-orange-500 mt-0.5 shrink-0">✦</span>
+                        {h}
                       </li>
                     ))}
                   </ul>
                 </Card>
-              </div>
-            )}
-          </motion.div>
-        </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </div>
   );
