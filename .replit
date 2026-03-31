@@ -7,7 +7,8 @@ channel = "stable-25_05"
 
 [deployment]
 deploymentTarget = "autoscale"
-run = ["sh", "-c", "npm run dev"]
+run = ["node", "./dist/index.cjs"]
+build = ["npm", "run", "build"]
 
 [[ports]]
 localPort = 5000
@@ -38,4 +39,4 @@ args = "npm run dev"
 waitForPort = 5000
 
 [agent]
-integrations = ["javascript_sendgrid==1.0.0", "javascript_supabase==1.0.0"]
+integrations = ["javascript_sendgrid:1.0.0", "javascript_supabase:1.0.0"]
