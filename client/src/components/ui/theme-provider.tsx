@@ -1,12 +1,14 @@
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+
+type Theme = "light" | "dark";
 
 type ThemeProviderProps = {
   children: React.ReactNode;
 };
 
 type ThemeProviderState = {
-  theme: "light";
-  setTheme: (theme: "light") => void;
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
 };
 
@@ -19,18 +21,27 @@ const initialState: ThemeProviderState = {
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+  const [theme, setThemeState] = useState<Theme>(() => {
+    const stored = localStorage.getItem("portfolio-theme");
+    return (stored === "dark" || stored === "light") ? stored : "light";
+  });
+
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove("dark");
-    root.classList.add("light");
-    localStorage.removeItem("portfolio-theme");
-  }, []);
+    root.classList.remove("light", "dark");
+    root.classList.add(theme);
+    localStorage.setItem("portfolio-theme", theme);
+  }, [theme]);
 
-  const value = {
-    theme: "light" as const,
-    setTheme: () => null,
-    toggleTheme: () => null,
+  const setTheme = (newTheme: Theme) => {
+    setThemeState(newTheme);
   };
+
+  const toggleTheme = () => {
+    setThemeState((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
+  const value = { theme, setTheme, toggleTheme };
 
   return (
     <ThemeProviderContext.Provider {...props} value={value}>

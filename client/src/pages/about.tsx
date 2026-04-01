@@ -103,7 +103,7 @@ const educationTimeline = [
 ];
 
 export default function AboutPage() {
-  const [bioExpanded, setBioExpanded] = useState(false);
+  const [bioExpanded, setBioExpanded] = useState(true);
   const { toast } = useToast();
 
   const downloadResume = () => {

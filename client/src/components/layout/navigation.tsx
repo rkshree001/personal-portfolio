@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
-import { Menu, Code, X, User, Briefcase, Cog, FileText, MessageCircle, Home, Sparkles } from "lucide-react";
+import { Menu, Code, X, User, Briefcase, Cog, FileText, MessageCircle, Home, Sparkles, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "@/components/ui/theme-provider";
 
 const navItems = [
   { href: "/", label: "Home", icon: Home, bg: "bg-blue-50" },
@@ -17,10 +18,11 @@ const navItems = [
 export default function Navigation() {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 right-0 bg-gradient-to-r from-white/95 via-blue-50/95 to-violet-50/95 backdrop-blur-xl z-30 border-b border-blue-100 shadow-lg shadow-blue-100/50"
+      className="fixed top-0 left-0 right-0 bg-gradient-to-r from-white/95 via-blue-50/95 to-violet-50/95 dark:from-slate-950/95 dark:via-slate-900/95 dark:to-slate-950/95 backdrop-blur-xl z-30 border-b border-blue-100 dark:border-slate-800 shadow-lg shadow-blue-100/50 dark:shadow-slate-900/50"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
@@ -71,7 +73,7 @@ export default function Navigation() {
                     className={`font-semibold transition-all duration-300 cursor-pointer px-4 py-2.5 rounded-xl block ${
                       location === item.href
                         ? "text-white bg-gradient-to-r from-blue-600 to-violet-600 shadow-lg shadow-blue-500/30"
-                        : "text-slate-600 hover:text-blue-600 hover:bg-blue-50"
+                        : "text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-slate-800"
                     }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -91,6 +93,28 @@ export default function Navigation() {
           </div>
 
           <div className="flex items-center space-x-3">
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleTheme}
+                className="rounded-xl border border-blue-100 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-slate-700 shadow-sm"
+                data-testid="theme-toggle"
+                aria-label="Toggle dark mode"
+              >
+                <AnimatePresence mode="wait">
+                  {theme === "dark" ? (
+                    <motion.div key="sun" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.25 }}>
+                      <Sun className="h-4 w-4" />
+                    </motion.div>
+                  ) : (
+                    <motion.div key="moon" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.25 }}>
+                      <Moon className="h-4 w-4" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </Button>
+            </motion.div>
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
