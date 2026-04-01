@@ -441,8 +441,8 @@ export default function AboutPage() {
 
                   <div className={`ml-14 md:ml-0 md:w-5/12 ${index % 2 === 0 ? "md:mr-auto md:pr-12" : "md:ml-auto md:pl-12"}`}>
                     <motion.div whileHover={{ scale: 1.02, y: -2 }} transition={{ type: "spring", stiffness: 300 }}>
-                      <Card className="p-6 border-0 shadow-xl bg-white hover:shadow-2xl transition-all">
-                        <div className={`absolute top-0 left-0 w-1 h-full rounded-l-xl bg-gradient-to-b ${job.color}`} />
+                      <Card className="p-6 border-0 shadow-xl bg-white hover:shadow-2xl transition-all relative overflow-hidden">
+                        <div className={`absolute top-0 left-0 w-1 h-full bg-gradient-to-b ${job.color}`} />
                         <div className="flex items-start justify-between mb-3 flex-wrap gap-2 pl-2">
                           <div>
                             <h4 className="font-bold text-base text-slate-900 leading-snug">{job.title}</h4>

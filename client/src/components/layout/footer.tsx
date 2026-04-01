@@ -10,6 +10,7 @@ export default function Footer() {
     { href: "/skills", label: "Skills" },
     { href: "/resume", label: "Resume" },
     { href: "/contact", label: "Contact" },
+    { href: "/hire-me", label: "Hire Me" },
   ];
 
   return (
@@ -89,7 +90,7 @@ export default function Footer() {
 
         <div className="border-t border-slate-800 pt-8 text-center">
           <p className="text-slate-400" data-testid="footer-copyright">
-            © 2025 Shree Bhargav R K. Built with passion and lots of ☕
+            © 2026 Shree Bhargav R K. Built with passion and lots of ☕
           </p>
           <p className="text-slate-500 text-sm mt-2" data-testid="footer-tech-note">
             Designed & Developed with modern web technologies

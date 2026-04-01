@@ -202,23 +202,53 @@ export default function HireMePage() {
   return (
     <>
       <AlertDialog open={showConfirm} onOpenChange={setShowConfirm}>
-        <AlertDialogContent className="border-violet-200">
-          <AlertDialogHeader>
-            <AlertDialogTitle className="text-xl">Submit your hire request?</AlertDialogTitle>
-            <AlertDialogDescription>
-              You're about to send a hire request to Shree Bhargav. He'll review your project details and respond within 24 hours with a proposal.
+        <AlertDialogContent className="border-0 shadow-2xl bg-white dark:bg-slate-900 max-w-md rounded-2xl p-0 overflow-hidden">
+          <div className="bg-gradient-to-r from-violet-600 to-blue-600 px-7 pt-7 pb-5">
+            <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center mb-4">
+              <Briefcase className="w-7 h-7 text-white" />
+            </div>
+            <AlertDialogTitle className="text-white text-xl font-bold">Ready to submit your request?</AlertDialogTitle>
+            <AlertDialogDescription className="text-white/80 text-sm mt-1">
+              I'll personally review your project and respond within 24 hours.
             </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel data-testid="hire-confirm-cancel">Cancel</AlertDialogCancel>
-            <AlertDialogAction
-              onClick={handleConfirmedSend}
-              className="bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-700 hover:to-blue-700 text-white border-0"
-              data-testid="hire-confirm-send"
-            >
-              Yes, submit request
-            </AlertDialogAction>
-          </AlertDialogFooter>
+          </div>
+          <div className="px-7 py-5">
+            <div className="space-y-2 mb-6">
+              {formData.projectType && (
+                <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                  <span className="text-violet-500">📱</span>
+                  <span><strong>Type:</strong> {formData.projectType}</span>
+                </div>
+              )}
+              {formData.budget && (
+                <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                  <span className="text-emerald-500">💰</span>
+                  <span><strong>Budget:</strong> {formData.budget}</span>
+                </div>
+              )}
+              {formData.timeline && (
+                <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                  <span className="text-blue-500">📅</span>
+                  <span><strong>Timeline:</strong> {formData.timeline}</span>
+                </div>
+              )}
+            </div>
+            <AlertDialogFooter className="gap-3 sm:gap-3">
+              <AlertDialogCancel
+                data-testid="hire-confirm-cancel"
+                className="flex-1 border-slate-200 dark:border-slate-700 rounded-xl"
+              >
+                Go Back
+              </AlertDialogCancel>
+              <AlertDialogAction
+                onClick={handleConfirmedSend}
+                className="flex-1 bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-700 hover:to-blue-700 text-white border-0 rounded-xl font-semibold"
+                data-testid="hire-confirm-send"
+              >
+                Yes, Submit Request
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </div>
         </AlertDialogContent>
       </AlertDialog>
 
@@ -467,17 +497,17 @@ export default function HireMePage() {
                     <div className="space-y-1.5">
                       <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Project Type *</Label>
                       <Select onValueChange={(v) => handleInputChange("projectType", v)} value={formData.projectType}>
-                        <SelectTrigger className="border-slate-200 dark:border-slate-700" data-testid="select-project-type">
+                        <SelectTrigger className="border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800" data-testid="select-project-type">
                           <SelectValue placeholder="Select type" />
                         </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Android App">Android App</SelectItem>
-                          <SelectItem value="Web Application">Web Application</SelectItem>
-                          <SelectItem value="Full Stack">Full Stack</SelectItem>
-                          <SelectItem value="POS / Enterprise">POS / Enterprise</SelectItem>
-                          <SelectItem value="Technical Consulting">Technical Consulting</SelectItem>
-                          <SelectItem value="Team Leadership">Team Leadership</SelectItem>
-                          <SelectItem value="Other">Other</SelectItem>
+                        <SelectContent className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-xl rounded-xl">
+                          <SelectItem value="Android App">📱 Android App</SelectItem>
+                          <SelectItem value="Web Application">🌐 Web Application</SelectItem>
+                          <SelectItem value="Full Stack">⚡ Full Stack</SelectItem>
+                          <SelectItem value="POS / Enterprise">🖥️ POS / Enterprise</SelectItem>
+                          <SelectItem value="Technical Consulting">💡 Technical Consulting</SelectItem>
+                          <SelectItem value="Team Leadership">👥 Team Leadership</SelectItem>
+                          <SelectItem value="Other">✨ Other</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -485,16 +515,16 @@ export default function HireMePage() {
                     <div className="space-y-1.5">
                       <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Budget Range *</Label>
                       <Select onValueChange={(v) => handleInputChange("budget", v)} value={formData.budget}>
-                        <SelectTrigger className="border-slate-200 dark:border-slate-700" data-testid="select-budget">
+                        <SelectTrigger className="border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800" data-testid="select-budget">
                           <SelectValue placeholder="Select budget" />
                         </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Under $500">Under $500</SelectItem>
-                          <SelectItem value="$500 - $1,500">$500 - $1,500</SelectItem>
-                          <SelectItem value="$1,500 - $5,000">$1,500 - $5,000</SelectItem>
-                          <SelectItem value="$5,000 - $15,000">$5,000 - $15,000</SelectItem>
-                          <SelectItem value="$15,000+">$15,000+</SelectItem>
-                          <SelectItem value="Negotiable">Negotiable</SelectItem>
+                        <SelectContent className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-xl rounded-xl">
+                          <SelectItem value="Under $500">💵 Under $500</SelectItem>
+                          <SelectItem value="$500 – $1,500">💵 $500 – $1,500</SelectItem>
+                          <SelectItem value="$1,500 – $5,000">💰 $1,500 – $5,000</SelectItem>
+                          <SelectItem value="$5,000 – $15,000">💰 $5,000 – $15,000</SelectItem>
+                          <SelectItem value="$15,000+">💎 $15,000+</SelectItem>
+                          <SelectItem value="Negotiable">🤝 Negotiable</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -502,16 +532,16 @@ export default function HireMePage() {
                     <div className="space-y-1.5">
                       <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Timeline *</Label>
                       <Select onValueChange={(v) => handleInputChange("timeline", v)} value={formData.timeline}>
-                        <SelectTrigger className="border-slate-200 dark:border-slate-700" data-testid="select-timeline">
+                        <SelectTrigger className="border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800" data-testid="select-timeline">
                           <SelectValue placeholder="Select timeline" />
                         </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="ASAP (1-2 weeks)">ASAP (1-2 weeks)</SelectItem>
-                          <SelectItem value="1 Month">1 Month</SelectItem>
-                          <SelectItem value="2-3 Months">2-3 Months</SelectItem>
-                          <SelectItem value="3-6 Months">3-6 Months</SelectItem>
-                          <SelectItem value="6+ Months">6+ Months</SelectItem>
-                          <SelectItem value="Ongoing / Retainer">Ongoing / Retainer</SelectItem>
+                        <SelectContent className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-xl rounded-xl">
+                          <SelectItem value="ASAP (1-2 weeks)">🚀 ASAP (1-2 weeks)</SelectItem>
+                          <SelectItem value="1 Month">📅 1 Month</SelectItem>
+                          <SelectItem value="2-3 Months">🗓️ 2-3 Months</SelectItem>
+                          <SelectItem value="3-6 Months">📆 3-6 Months</SelectItem>
+                          <SelectItem value="6+ Months">⏳ 6+ Months</SelectItem>
+                          <SelectItem value="Ongoing / Retainer">🔄 Ongoing / Retainer</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
