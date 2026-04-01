@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
 import { personalInfo } from "@/data/portfolio-data";
-import { MapPin, Mail, Phone, Github, Linkedin, Send, ExternalLink } from "lucide-react";
+import { MapPin, Mail, Phone, Github, Linkedin, Send, ExternalLink, MessageSquare } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 
 import { Check, Search } from "lucide-react";
@@ -230,23 +230,53 @@ export default function ContactPage() {
   return (
     <>
     <AlertDialog open={showConfirm} onOpenChange={setShowConfirm}>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Send your message?</AlertDialogTitle>
-          <AlertDialogDescription>
-            You're about to send a message to Shree Bhargav. He'll receive it and reply within 24 hours. Are you sure you want to proceed?
+      <AlertDialogContent className="border-0 shadow-2xl bg-white dark:bg-slate-900 max-w-md rounded-2xl p-0 overflow-hidden">
+        <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 px-7 pt-7 pb-5">
+          <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center mb-4">
+            <MessageSquare className="w-7 h-7 text-white" />
+          </div>
+          <AlertDialogTitle className="text-white text-xl font-bold">Ready to send your message?</AlertDialogTitle>
+          <AlertDialogDescription className="text-white/80 text-sm mt-1">
+            Shree Bhargav will receive it and personally reply within 24 hours.
           </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel data-testid="confirm-cancel">Cancel</AlertDialogCancel>
-          <AlertDialogAction
-            onClick={handleConfirmedSend}
-            className="bg-blue-600 hover:bg-blue-700 text-white"
-            data-testid="confirm-send"
-          >
-            Yes, send it
-          </AlertDialogAction>
-        </AlertDialogFooter>
+        </div>
+        <div className="px-7 py-5">
+          <div className="space-y-2 mb-6">
+            {formData.name && (
+              <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                <span className="text-blue-500">👤</span>
+                <span><strong>From:</strong> {formData.name}</span>
+              </div>
+            )}
+            {formData.email && (
+              <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                <span className="text-indigo-500">📧</span>
+                <span><strong>Email:</strong> {formData.email}</span>
+              </div>
+            )}
+            {formData.message && (
+              <div className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
+                <span className="text-violet-500 mt-0.5">💬</span>
+                <span className="line-clamp-2"><strong>Message:</strong> {formData.message}</span>
+              </div>
+            )}
+          </div>
+          <AlertDialogFooter className="gap-3 sm:gap-3">
+            <AlertDialogCancel
+              data-testid="confirm-cancel"
+              className="flex-1 border-slate-200 dark:border-slate-700 rounded-xl"
+            >
+              Go Back
+            </AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleConfirmedSend}
+              className="flex-1 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white border-0 rounded-xl font-semibold"
+              data-testid="confirm-send"
+            >
+              Yes, Send it
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </div>
       </AlertDialogContent>
     </AlertDialog>
 
