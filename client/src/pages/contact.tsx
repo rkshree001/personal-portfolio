@@ -1,14 +1,15 @@
 import { useState } from "react";
+import { useLocation } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
 import { personalInfo } from "@/data/portfolio-data";
 import { MapPin, Mail, Phone, Github, Linkedin, Send, ExternalLink } from "lucide-react";
-import { supabase } from "@/lib/supabaseClient"; // ✅ import supabase client
+import { supabase } from "@/lib/supabaseClient";
 
 import { Check, Search } from "lucide-react";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
@@ -171,94 +172,84 @@ const contactMethods = [
 
 export default function ContactPage() {
   const { toast } = useToast();
+  const [, navigate] = useLocation();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', mobile: '', message: '' });
   const [selectedCountry, setSelectedCountry] = useState("+91");
   const [open, setOpen] = useState(false);
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setIsSubmitting(true);
 
-  //   try {
-  //     // ✅ Save directly to Supabase
-  //     const { error } = await supabase.from("messages").insert([
-  //       {
-  //         name: formData.name,
-  //         email: formData.email,
-  //         mobile: `${selectedCountry} ${formData.mobile}`,
-  //         message: formData.message,
-  //       }
-  //     ]);
-
-  //     if (error) {
-  //       console.error(error);
-  //       toast({
-  //         title: "❌ Failed to send message",
-  //         description: error.message || "Please try again later.",
-  //         variant: "destructive",
-  //       });
-  //     } else {
-  //       toast({
-  //         title: "🎉 Message sent successfully!",
-  //         description: "Thanks for reaching out! I'll get back to you within 24 hours.",
-  //       });
-  //       setFormData({ name: '', email: '', mobile: '', message: '' });
-  //     }
-  //   } catch (err) {
-  //     console.error('Error submitting form:', err);
-  //     toast({
-  //       title: "❌ Network error",
-  //       description: "Please check your connection and try again.",
-  //       variant: "destructive",
-  //     });
-  //   } finally {
-  //     setIsSubmitting(false);
-  //   }
-  // };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-
-  const payload = {
-    name: formData.name,
-    email: formData.email,
-    mobile: `${selectedCountry} ${formData.mobile}`,
-    message: formData.message,
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setShowConfirm(true);
   };
 
-  try {
-    const { error } = await supabase.from("messages").insert([payload]);
-    if (error) console.warn("Supabase insert failed:", error.message);
-  } catch (dbErr: any) {
-    console.warn("Supabase unavailable:", dbErr.message);
-  }
+  const handleConfirmedSend = async () => {
+    setShowConfirm(false);
+    setIsSubmitting(true);
 
-  try {
-    const res = await fetch("/api/notify", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      mobile: `${selectedCountry} ${formData.mobile}`,
+      message: formData.message,
+    };
+
+    try {
+      const { error } = await supabase.from("messages").insert([payload]);
+      if (error) console.warn("Supabase insert failed:", error.message);
+    } catch (dbErr: any) {
+      console.warn("Supabase unavailable:", dbErr.message);
+    }
+
+    try {
+      const res = await fetch("/api/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (!data.success) console.warn("Email notification issue:", data.emailError);
+    } catch (mailErr: any) {
+      console.warn("Email send failed (non-blocking):", mailErr.message);
+    }
+
+    toast({
+      title: "Message sent successfully!",
+      description: "Thanks for reaching out! I'll get back to you within 24 hours.",
     });
-    const data = await res.json();
-    if (!data.success) console.warn("Email notification issue:", data.emailError);
-  } catch (mailErr: any) {
-    console.warn("Email send failed (non-blocking):", mailErr.message);
-  }
-
-  toast({
-    title: "🎉 Message sent successfully!",
-    description: "Thanks for reaching out! I'll get back to you within 24 hours.",
-  });
-  setFormData({ name: "", email: "", mobile: "", message: "" });
-  setIsSubmitting(false);
-};
+    setFormData({ name: "", email: "", mobile: "", message: "" });
+    setIsSubmitting(false);
+    navigate("/");
+  };
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
   return (
+    <>
+    <AlertDialog open={showConfirm} onOpenChange={setShowConfirm}>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Send your message?</AlertDialogTitle>
+          <AlertDialogDescription>
+            You're about to send a message to Shree Bhargav. He'll receive it and reply within 24 hours. Are you sure you want to proceed?
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel data-testid="confirm-cancel">Cancel</AlertDialogCancel>
+          <AlertDialogAction
+            onClick={handleConfirmedSend}
+            className="bg-blue-600 hover:bg-blue-700 text-white"
+            data-testid="confirm-send"
+          >
+            Yes, send it
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+
     <div className="min-h-screen py-24 px-4 bg-slate-50 dark:bg-slate-950" data-testid="contact-page">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
@@ -437,5 +428,6 @@ export default function ContactPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
