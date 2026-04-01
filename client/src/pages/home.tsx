@@ -204,7 +204,7 @@ export default function HomePage() {
 
             {/* Name with enhanced typography */}
             <motion.h1
-              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 bg-clip-text text-transparent"
+              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 bg-clip-text text-transparent pb-2 leading-tight"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}

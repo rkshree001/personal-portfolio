@@ -254,6 +254,25 @@ export const projects = [
     image: "Smartphone"
   },
   {
+    id: 12,
+    title: "Smart Finance Pilot",
+    description: "A smart personal finance web app for tracking income, expenses, budgets, and financial goals with an intuitive dashboard and analytics.",
+    tech: ["React", "TypeScript", "Finance", "Dashboard", "Analytics", "Charts"],
+    category: "web",
+    duration: "2024",
+    badge: "NEW",
+    features: [
+      "Income and expense tracking with categories",
+      "Budget planning and goal management",
+      "Interactive financial analytics dashboard",
+      "Transaction history and reports",
+      "Smart insights and spending trends"
+    ],
+    github: "#",
+    demo: "https://smartfinancepilot.netlify.app/",
+    image: "TrendingUp"
+  },
+  {
     id: 11,
     title: "AI Child Drowning Prevention",
     description: "AI-powered face recognition system to detect children under five in deep water and alert lifeguards.",

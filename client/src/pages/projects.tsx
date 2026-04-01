@@ -5,12 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { projects } from "@/data/portfolio-data";
-import { Github, ExternalLink, Search, Activity, Plane, Dumbbell, Shield, Cloud, Store, Printer, Ship, ShieldCheck, Smartphone, Eye, Sparkles } from "lucide-react";
+import { Github, ExternalLink, Search, Activity, Plane, Dumbbell, Shield, Cloud, Store, Printer, Ship, ShieldCheck, Smartphone, Eye, Sparkles, TrendingUp, Lock } from "lucide-react";
 
 const filterCategories = [
   { value: "all", label: "All Projects" },
   { value: "mobile", label: "Mobile Apps" },
   { value: "enterprise", label: "Enterprise" },
+  { value: "web", label: "Web Apps" },
   { value: "printing", label: "Printing Solutions" },
   { value: "entertainment", label: "Entertainment" },
   { value: "ai", label: "AI/ML" },
@@ -28,6 +29,7 @@ const iconMap = {
   ShieldCheck,
   Smartphone,
   Eye,
+  TrendingUp,
 };
 
 const categoryColors: Record<string, string> = {
@@ -36,6 +38,7 @@ const categoryColors: Record<string, string> = {
   printing: "from-orange-500 to-amber-500",
   entertainment: "from-pink-500 to-rose-500",
   ai: "from-emerald-500 to-teal-500",
+  web: "from-green-500 to-teal-500",
   default: "from-slate-400 to-slate-500",
 };
 
@@ -85,10 +88,10 @@ export default function ProjectsPage() {
             <Sparkles className="w-8 h-8 text-white" />
           </motion.div>
           <h2
-            className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 bg-clip-text text-transparent"
+            className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 bg-clip-text text-transparent pb-2 leading-tight"
             data-testid="projects-title"
           >
-            💼 My Projects
+            My Projects
           </h2>
           <p className="text-lg text-slate-500 max-w-2xl mx-auto" data-testid="projects-subtitle">
             A collection of applications I've built to solve real-world problems
@@ -221,15 +224,33 @@ export default function ProjectsPage() {
                           </div>
                         </div>
                         <div className="flex gap-2 pt-2">
-                          <Button
-                            size="sm"
-                            className="flex-1 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white border-0 shadow-md"
-                            onClick={() => window.open(project.github, "_blank")}
-                            data-testid={`project-github-${project.id}`}
-                          >
-                            <Github className="mr-1.5 h-3.5 w-3.5" />
-                            Code
-                          </Button>
+                          {project.github === "#" ? (
+                            <div className="flex-1 relative group/lock">
+                              <Button
+                                size="sm"
+                                disabled
+                                className="w-full bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed"
+                                data-testid={`project-github-${project.id}`}
+                              >
+                                <Lock className="mr-1.5 h-3.5 w-3.5" />
+                                Code
+                              </Button>
+                              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-slate-800 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover/lock:opacity-100 transition-opacity duration-200 pointer-events-none z-20 shadow-lg">
+                                Contact me for source code
+                                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-800" />
+                              </div>
+                            </div>
+                          ) : (
+                            <Button
+                              size="sm"
+                              className="flex-1 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white border-0 shadow-md"
+                              onClick={() => window.open(project.github, "_blank")}
+                              data-testid={`project-github-${project.id}`}
+                            >
+                              <Github className="mr-1.5 h-3.5 w-3.5" />
+                              Code
+                            </Button>
+                          )}
                           <Button
                             size="sm"
                             variant="outline"
