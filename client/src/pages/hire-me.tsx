@@ -518,13 +518,13 @@ export default function HireMePage() {
                         <SelectTrigger className="border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800" data-testid="select-budget">
                           <SelectValue placeholder="Select budget" />
                         </SelectTrigger>
-                        <SelectContent className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-xl rounded-xl">
-                          <SelectItem value="Under $500">💵 Under $500</SelectItem>
-                          <SelectItem value="$500 – $1,500">💵 $500 – $1,500</SelectItem>
-                          <SelectItem value="$1,500 – $5,000">💰 $1,500 – $5,000</SelectItem>
-                          <SelectItem value="$5,000 – $15,000">💰 $5,000 – $15,000</SelectItem>
-                          <SelectItem value="$15,000+">💎 $15,000+</SelectItem>
-                          <SelectItem value="Negotiable">🤝 Negotiable</SelectItem>
+                        <SelectContent className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-xl rounded-xl min-w-[340px]">
+                          <SelectItem value="Under $500 · ₹41,500 · ₽46,000">💵 Under $500 &nbsp;·&nbsp; ₹41,500 &nbsp;·&nbsp; ₽46,000</SelectItem>
+                          <SelectItem value="$500–$1,500 · ₹41,500–₹1,24,500 · ₽46K–₽1,38K">💵 $500–$1,500 &nbsp;·&nbsp; ₹41K–₹1.24L &nbsp;·&nbsp; ₽46K–₽1.38L</SelectItem>
+                          <SelectItem value="$1,500–$5,000 · ₹1.25L–₹4.15L · ₽1.38L–₽4.6L">💰 $1.5K–$5K &nbsp;·&nbsp; ₹1.25L–₹4.15L &nbsp;·&nbsp; ₽1.38L–₽4.6L</SelectItem>
+                          <SelectItem value="$5,000–$15,000 · ₹4.15L–₹12.45L · ₽4.6L–₽13.8L">💰 $5K–$15K &nbsp;·&nbsp; ₹4.15L–₹12.45L &nbsp;·&nbsp; ₽4.6L–₽13.8L</SelectItem>
+                          <SelectItem value="$15,000+ · ₹12.45L+ · ₽13.8L+">💎 $15K+ &nbsp;·&nbsp; ₹12.45L+ &nbsp;·&nbsp; ₽13.8L+</SelectItem>
+                          <SelectItem value="Negotiable">🤝 Negotiable / Open Budget</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

@@ -10,6 +10,33 @@ function createTransporter() {
   });
 }
 
+function formatBudgetHtml(budget: string): string {
+  const parts = budget.split("·").map((s) => s.trim());
+  if (parts.length === 3) {
+    return `
+      <table style="width:100%;border-collapse:separate;border-spacing:8px 0;margin:0;">
+        <tr>
+          <td style="background:#fff7ed;border:1.5px solid #fdba74;border-radius:10px;padding:10px 12px;text-align:center;">
+            <div style="font-size:18px;margin-bottom:3px;">🇺🇸</div>
+            <div style="font-size:10px;font-weight:700;color:#9a3412;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:2px;">USD</div>
+            <div style="font-size:13px;font-weight:800;color:#1e293b;">${parts[0]}</div>
+          </td>
+          <td style="background:#fdf4ff;border:1.5px solid #e879f9;border-radius:10px;padding:10px 12px;text-align:center;">
+            <div style="font-size:18px;margin-bottom:3px;">🇮🇳</div>
+            <div style="font-size:10px;font-weight:700;color:#7e22ce;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:2px;">INR</div>
+            <div style="font-size:13px;font-weight:800;color:#1e293b;">${parts[1]}</div>
+          </td>
+          <td style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;padding:10px 12px;text-align:center;">
+            <div style="font-size:18px;margin-bottom:3px;">🇷🇺</div>
+            <div style="font-size:10px;font-weight:700;color:#166534;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:2px;">RUB</div>
+            <div style="font-size:13px;font-weight:800;color:#1e293b;">${parts[2]}</div>
+          </td>
+        </tr>
+      </table>`;
+  }
+  return `<span style="font-size:14px;font-weight:700;color:#1e293b;">${budget}</span>`;
+}
+
 export async function sendNotification(data: any) {
   console.log("📨 Sending email notification for contact form submission");
 
@@ -231,7 +258,7 @@ export async function sendHireMeNotification(data: any) {
         .info-item { background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 14px; padding: 16px; }
         .info-item .label { font-size: 11px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 5px; }
         .info-item .value { font-size: 14px; color: #1e293b; font-weight: 700; word-break: break-word; }
-        .project-details { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+        .project-details { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
         .detail-card { border-radius: 14px; padding: 20px 16px; text-align: center; }
         .detail-card.type { background: linear-gradient(135deg, #f0e7ff, #e9d5ff); border: 1px solid #d8b4fe; }
         .detail-card.budget { background: linear-gradient(135deg, #ecfdf5, #d1fae5); border: 1px solid #6ee7b7; }
@@ -287,16 +314,15 @@ export async function sendHireMeNotification(data: any) {
                 <div class="d-label">Project Type</div>
                 <div class="d-value">${data.projectType}</div>
               </div>
-              <div class="detail-card budget">
-                <div class="icon">💰</div>
-                <div class="d-label">Budget</div>
-                <div class="d-value">${data.budget}</div>
-              </div>
               <div class="detail-card timeline">
                 <div class="icon">📅</div>
                 <div class="d-label">Timeline</div>
                 <div class="d-value">${data.timeline}</div>
               </div>
+            </div>
+            <div style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1.5px solid #6ee7b7;border-radius:16px;padding:18px 20px;margin-bottom:28px;">
+              <div style="text-align:center;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#065f46;margin-bottom:12px;">💰 Budget Range</div>
+              ${formatBudgetHtml(data.budget)}
             </div>
 
             <div class="section-label">Project Description</div>
@@ -339,7 +365,7 @@ export async function sendHireMeNotification(data: any) {
         .greeting { font-size: 22px; font-weight: 700; color: #1e293b; margin-bottom: 14px; }
         .text { font-size: 15px; color: #64748b; line-height: 1.8; margin-bottom: 28px; }
         .section-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #6366f1; margin-bottom: 14px; }
-        .summary-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+        .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
         .summary-card { border-radius: 16px; padding: 20px 14px; text-align: center; }
         .summary-card.type { background: linear-gradient(135deg, #f0e7ff, #ede9fe); border: 1px solid #c4b5fd; }
         .summary-card.budget { background: linear-gradient(135deg, #ecfdf5, #d1fae5); border: 1px solid #6ee7b7; }
@@ -387,16 +413,15 @@ export async function sendHireMeNotification(data: any) {
                 <div class="s-label">Project Type</div>
                 <div class="s-value">${data.projectType}</div>
               </div>
-              <div class="summary-card budget">
-                <div class="icon">💰</div>
-                <div class="s-label">Budget</div>
-                <div class="s-value">${data.budget}</div>
-              </div>
               <div class="summary-card timeline">
                 <div class="icon">📅</div>
                 <div class="s-label">Timeline</div>
                 <div class="s-value">${data.timeline}</div>
               </div>
+            </div>
+            <div style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1.5px solid #6ee7b7;border-radius:16px;padding:18px 20px;margin-bottom:28px;">
+              <div style="text-align:center;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#065f46;margin-bottom:12px;">💰 Budget Range</div>
+              ${formatBudgetHtml(data.budget)}
             </div>
 
             <div class="section-label">What Happens Next?</div>
