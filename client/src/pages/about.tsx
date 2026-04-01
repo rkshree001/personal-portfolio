@@ -104,8 +104,6 @@ const educationTimeline = [
 
 export default function AboutPage() {
   const [bioExpanded, setBioExpanded] = useState(false);
-  const [sparkleEffect, setSparkleEffect] = useState(false);
-  const [arcReactorEffect, setArcReactorEffect] = useState(false);
   const { toast } = useToast();
 
   const downloadResume = () => {
@@ -118,24 +116,6 @@ export default function AboutPage() {
       title: "Resume download started! 📄",
       description: "Your download should begin shortly.",
     });
-  };
-
-  const triggerHarryPotterEgg = () => {
-    setSparkleEffect(true);
-    toast({
-      title: "✨ Expelliarmus!",
-      description: "Magic is everywhere in coding! ⚡",
-    });
-    setTimeout(() => setSparkleEffect(false), 1000);
-  };
-
-  const triggerMarvelEgg = () => {
-    setArcReactorEffect(true);
-    toast({
-      title: "🦸‍♂️ I am Iron Man!",
-      description: "Heroes are made by the paths they choose 🚀",
-    });
-    setTimeout(() => setArcReactorEffect(false), 1000);
   };
 
   return (
@@ -226,43 +206,42 @@ export default function AboutPage() {
               </Button>
 
               <motion.div
-                className="flex justify-center space-x-8 mt-6 pt-4 border-t border-dashed border-blue-200 dark:border-blue-800"
+                className="mt-6 pt-4 border-t border-dashed border-blue-200 dark:border-blue-800"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                <motion.div
-                  className="cursor-pointer text-center group"
-                  onClick={triggerHarryPotterEgg}
-                  animate={sparkleEffect ? { scale: [1, 1.2, 1] } : {}}
-                  transition={{ duration: 0.6 }}
-                  data-testid="harry-potter-egg"
-                >
-                  <motion.span
-                    className="text-4xl block mb-2 group-hover:scale-110 transition-transform"
-                    animate={sparkleEffect ? { rotate: [0, 15, -15, 0] } : {}}
-                  >
-                    🪄
-                  </motion.span>
-                  <p className="text-sm text-muted-foreground font-medium">Harry Potter Fan</p>
-                </motion.div>
-                
-                <motion.div
-                  className="cursor-pointer text-center group"
-                  onClick={triggerMarvelEgg}
-                  animate={arcReactorEffect ? { scale: [1, 1.2, 1] } : {}}
-                  transition={{ duration: 0.6 }}
-                  data-testid="marvel-egg"
-                >
-                  <motion.span
-                    className="text-4xl block mb-2 group-hover:scale-110 transition-transform"
-                    animate={arcReactorEffect ? { boxShadow: ["0 0 10px rgba(59,130,246,0.5)", "0 0 30px rgba(59,130,246,0.8)", "0 0 10px rgba(59,130,246,0.5)"] } : {}}
-                    style={{ borderRadius: "50%" }}
-                  >
-                    🦸‍♂️
-                  </motion.span>
-                  <p className="text-sm text-muted-foreground font-medium">Marvel Enthusiast</p>
-                </motion.div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">Beyond the Code</p>
+                <div className="grid grid-cols-2 gap-3" data-testid="personal-highlights">
+                  <div className="flex items-center gap-3 bg-orange-50 dark:bg-orange-950/20 rounded-xl px-4 py-3">
+                    <span className="text-2xl">🏀</span>
+                    <div>
+                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Basketball Captain</p>
+                      <p className="text-xs text-muted-foreground">School & Diploma team</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 bg-green-50 dark:bg-green-950/20 rounded-xl px-4 py-3">
+                    <span className="text-2xl">🎖️</span>
+                    <div>
+                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">NCC Sergeant</p>
+                      <p className="text-xs text-muted-foreground">'B' & 'C' Certificates</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 bg-blue-50 dark:bg-blue-950/20 rounded-xl px-4 py-3">
+                    <span className="text-2xl">🌍</span>
+                    <div>
+                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Rotary Club VP</p>
+                      <p className="text-xs text-muted-foreground">Secretary & VP, 4+ years</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 bg-violet-50 dark:bg-violet-950/20 rounded-xl px-4 py-3">
+                    <span className="text-2xl">🏆</span>
+                    <div>
+                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">ISTE Vice President</p>
+                      <p className="text-xs text-muted-foreground">Adhiyamaan College</p>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             </Card>
           </motion.div>

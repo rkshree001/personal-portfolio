@@ -22,15 +22,15 @@ export const aboutMe = {
     "My expertise spans the entire Android ecosystem - from Java and Kotlin to modern Jetpack Compose. I've specialized in complex integrations including REST APIs, printing solutions (USB/Wi-Fi thermal printers), and PDF generation systems.",
     "Notable projects include building the NYC Schools app, Trip Wise Pay platform, Pozo Retail solutions, and comprehensive POS systems. I've also worked as a freelance developer, creating insurance policy applications with robust payment gateways and KYC verification systems.",
     "Beyond technical skills, I pride myself on mentoring team members, conducting thorough code reviews, and fostering a collaborative environment where innovation thrives. My goal is always to deliver user-centric solutions that make a real impact.",
-    "When I'm not immersed in code, you'll find me exploring magical worlds through Harry Potter books or following the latest Marvel adventures. These stories of heroes overcoming challenges inspire my approach to problem-solving in the tech world! ⚡🦸‍♂️"
+    "Outside of work, I have a strong background in leadership and community service — serving as NCC Sergeant, Basketball Team Captain, Vice President of ISTE, and holding leadership roles in Rotary Club Hosur for 4+ years. These experiences have shaped my collaborative mindset and commitment to making a difference both in tech and in the community."
   ],
   philosophy: "User-first design, clean code, and performance-focused development. I believe in continuous learning and fostering collaborative team environments.",
   funFacts: [
-    "Harry Potter enthusiast ⚡",
-    "Marvel fan 🦸‍♂️",
-    "Basketball team captain (2016-2020)",
-    "NCC Sergeant",
-    "Rotary Club leader (4+ years)"
+    "Basketball Team Captain 🏀",
+    "NCC Sergeant 🎖️",
+    "Rotary Club Secretary & VP 🌍",
+    "ISTE Vice President 🏆",
+    "Full Stack Certified (2024) 💻"
   ]
 };
 
