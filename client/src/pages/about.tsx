@@ -169,7 +169,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <Card className="p-8 border-0 shadow-2xl bg-gradient-to-br from-white via-blue-50/30 to-violet-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-violet-950/30 relative overflow-hidden h-full" data-testid="journey-card">
-              <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <motion.div
                   className="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/10 rounded-full"
                   animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
@@ -181,7 +181,7 @@ export default function AboutPage() {
                 <span className="text-3xl">💡</span>
                 <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">My Journey</span>
               </h3>
-              <div className="text-muted-foreground space-y-4" data-testid="bio-content">
+              <div className="relative z-10 text-muted-foreground space-y-4" data-testid="bio-content">
                 {bioExpanded ? (
                   <div className="space-y-4">
                     {aboutMe.fullBio.map((paragraph, index) => (
@@ -199,7 +199,7 @@ export default function AboutPage() {
               <Button
                 variant="link"
                 onClick={() => setBioExpanded(!bioExpanded)}
-                className="mt-4 p-0 h-auto text-primary hover:text-primary/80"
+                className="relative z-10 mt-4 p-0 h-auto text-primary hover:text-primary/80"
                 data-testid="bio-toggle"
               >
                 {bioExpanded ? "← Show Less" : "Read Full Story →"}
