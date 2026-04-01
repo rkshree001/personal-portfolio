@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
-import { User, Code, Cog, Mail, Github, Linkedin, Download, Star, Sparkles, Zap, Heart, Trophy, Rocket, Target } from "lucide-react";
+import { User, Code, Cog, Mail, Github, Linkedin, Download, Star, Sparkles, Zap, Heart, Trophy, Rocket, Target, Briefcase } from "lucide-react";
 import { personalInfo } from "@/data/portfolio-data";
 import { useToast } from "@/hooks/use-toast";
 
@@ -47,6 +48,17 @@ const quickAccessCards = [
     hoverColor: "hover:from-rose-100 hover:to-rose-200",
     glow: "shadow-rose-200/60",
     description: "Let's connect!"
+  },
+  {
+    icon: Briefcase,
+    label: "Hire Me",
+    href: "/hire-me",
+    color: "text-white",
+    bgColor: "bg-gradient-to-br from-violet-600 to-blue-600",
+    hoverColor: "hover:from-violet-700 hover:to-blue-700",
+    glow: "shadow-violet-400/60",
+    description: "Start a project together",
+    highlight: true,
   },
 ];
 
@@ -336,7 +348,7 @@ export default function HomePage() {
 
           {/* Enhanced Quick Access Cards */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.6 }}
@@ -349,45 +361,49 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 1.8 + index * 0.1 }}
                 whileHover={{ y: -10, scale: 1.05 }}
+                className={(card as any).highlight ? "sm:col-span-2 lg:col-span-1" : ""}
               >
                 <Link href={card.href}>
-                  <Card className={`text-center p-8 cursor-pointer transition-all duration-500 group border-0 shadow-xl hover:shadow-2xl ${card.bgColor} ${card.hoverColor} relative overflow-hidden h-48 flex flex-col justify-center`}
+                  <Card className={`text-center p-6 cursor-pointer transition-all duration-500 group border-0 shadow-xl hover:shadow-2xl ${card.bgColor} ${card.hoverColor} relative overflow-hidden h-44 flex flex-col justify-center`}
                         data-testid={`card-${card.label.toLowerCase().replace(' ', '-')}`}>
                     
-                    {/* Background glow effect */}
+                    {(card as any).highlight && (
+                      <motion.div
+                        className="absolute inset-0 bg-white/10"
+                        animate={{ opacity: [0.05, 0.15, 0.05] }}
+                        transition={{ duration: 3, repeat: Infinity }}
+                      />
+                    )}
+
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     />
                     
-                    {/* Icon container */}
                     <motion.div 
-                      className="w-16 h-16 mx-auto mb-4 rounded-xl bg-white/60 flex items-center justify-center group-hover:scale-110 transition-all duration-300 relative z-10 shadow-lg"
+                      className={`w-14 h-14 mx-auto mb-3 rounded-xl ${(card as any).highlight ? 'bg-white/20' : 'bg-white/60'} flex items-center justify-center group-hover:scale-110 transition-all duration-300 relative z-10 shadow-lg`}
                       whileHover={{ rotate: 5 }}
                     >
-                      <card.icon className={`h-8 w-8 ${card.color}`} />
-                      
-                      {/* Icon glow */}
-                      <motion.div
-                        className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300`}
-                        style={{ backgroundColor: card.color.includes('blue') ? '#3b82f6' : 
-                                card.color.includes('violet') ? '#8b5cf6' : 
-                                card.color.includes('emerald') ? '#10b981' : '#f43f5e' }}
-                      />
+                      <card.icon className={`h-7 w-7 ${card.color}`} />
                     </motion.div>
                     
-                    <h3 className="font-bold text-lg mb-2 relative z-10">{card.label}</h3>
-                    <p className="text-sm text-muted-foreground relative z-10">{card.description}</p>
+                    <h3 className={`font-bold text-base mb-1.5 relative z-10 ${(card as any).highlight ? 'text-white' : ''}`}>{card.label}</h3>
+                    <p className={`text-xs relative z-10 ${(card as any).highlight ? 'text-white/80' : 'text-muted-foreground'}`}>{card.description}</p>
                     
-                    {/* Hover arrow */}
+                    {(card as any).highlight && (
+                      <motion.div
+                        className="absolute -bottom-1 -right-1 w-16 h-16 bg-white/10 rounded-full"
+                        animate={{ scale: [1, 1.3, 1] }}
+                        transition={{ duration: 3, repeat: Infinity }}
+                      />
+                    )}
+
                     <motion.div
-                      className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300"
-                      animate={{ x: [0, 5, 0] }}
+                      className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300"
+                      animate={{ x: [0, 4, 0] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     >
-                      <div className={`w-6 h-6 rounded-full ${card.color.includes('blue') ? 'bg-blue-500' : 
-                          card.color.includes('violet') ? 'bg-violet-500' : 
-                          card.color.includes('emerald') ? 'bg-emerald-500' : 'bg-rose-500'} flex items-center justify-center`}>
-                        <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className={`w-5 h-5 rounded-full ${(card as any).highlight ? 'bg-white/30' : 'bg-slate-400/40'} flex items-center justify-center`}>
+                        <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </div>

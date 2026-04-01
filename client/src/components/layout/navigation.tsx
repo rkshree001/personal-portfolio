@@ -12,6 +12,7 @@ const navItems = [
   { href: "/skills", label: "Skills", icon: Cog, bg: "bg-orange-50" },
   { href: "/resume", label: "Resume", icon: FileText, bg: "bg-red-50" },
   { href: "/contact", label: "Contact", icon: MessageCircle, bg: "bg-pink-50" },
+  { href: "/hire-me", label: "Hire Me", icon: Sparkles, bg: "bg-gradient-to-r from-violet-50 to-blue-50", highlight: true },
 ];
 
 export default function Navigation() {
@@ -57,8 +58,8 @@ export default function Navigation() {
             </motion.div>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-2">
-            {navItems.map((item, index) => (
+          <div className="hidden md:flex items-center space-x-1">
+            {navItems.filter(i => !i.highlight).map((item, index) => (
               <Link key={item.href} href={item.href} data-testid={`nav-link-${item.label.toLowerCase()}`}>
                 <motion.div
                   className="relative"
@@ -87,6 +88,27 @@ export default function Navigation() {
                 </motion.div>
               </Link>
             ))}
+            <Link href="/hire-me" data-testid="nav-link-hire-me">
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="ml-2"
+              >
+                <span className={`font-bold cursor-pointer px-5 py-2.5 rounded-xl block transition-all duration-300 ${
+                  location === "/hire-me"
+                    ? "text-white bg-gradient-to-r from-violet-600 to-blue-600 shadow-lg"
+                    : "text-white bg-gradient-to-r from-violet-600 to-blue-600 shadow-md hover:shadow-lg hover:from-violet-700 hover:to-blue-700"
+                }`}>
+                  <span className="flex items-center gap-1.5">
+                    <Sparkles className="w-4 h-4" />
+                    Hire Me
+                  </span>
+                </span>
+              </motion.div>
+            </Link>
           </div>
 
           <div className="flex items-center space-x-3">

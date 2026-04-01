@@ -2,7 +2,7 @@ import "dotenv/config";
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
-import { sendNotification } from "./notify";
+import { sendNotification, sendHireMeNotification } from "./notify";
 
  
 const app = express();
@@ -45,6 +45,16 @@ app.post("/api/notify", async (req: Request, res: Response) => {
     res.json({ success: true, result: response });
   } catch (err: any) {
     console.error("Email send failed (non-blocking):", err.message);
+    res.json({ success: true, emailError: err.message });
+  }
+});
+
+app.post("/api/hire-notify", async (req: Request, res: Response) => {
+  try {
+    const response = await sendHireMeNotification(req.body);
+    res.json({ success: true, result: response });
+  } catch (err: any) {
+    console.error("Hire Me email send failed (non-blocking):", err.message);
     res.json({ success: true, emailError: err.message });
   }
 });

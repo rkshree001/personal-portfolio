@@ -11,6 +11,7 @@ import ProjectsPage from "@/pages/projects";
 import SkillsPage from "@/pages/skills";
 import ResumePage from "@/pages/resume";
 import ContactPage from "@/pages/contact";
+import HireMePage from "@/pages/hire-me";
 import Navigation from "@/components/layout/navigation";
 import Footer from "@/components/layout/footer";
 import FloatingResumeButton from "@/components/ui/floating-resume-button";
@@ -43,6 +44,7 @@ function Router() {
           <Route path="/skills" component={SkillsPage} />
           <Route path="/resume" component={ResumePage} />
           <Route path="/contact" component={ContactPage} />
+          <Route path="/hire-me" component={HireMePage} />
           <Route component={NotFound} />
         </Switch>
       </main>
