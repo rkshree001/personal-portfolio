@@ -36,9 +36,9 @@ function budgetCurrencyTable(budget) {
         <td width="33%" style="padding-left:6px;">
           <table width="100%" cellpadding="0" cellspacing="0" border="0">
             <tr>
-              <td align="center" style="background:#f0fdf4;border:2px solid #16a34a;border-radius:12px;padding:14px 10px;">
-                <p style="margin:0 0 4px 0;font-size:20px;line-height:1;">🇷🇺</p>
-                <p style="margin:0 0 5px 0;font-size:10px;font-weight:700;color:#166534;letter-spacing:1px;text-transform:uppercase;font-family:Arial,sans-serif;">RUB</p>
+              <td align="center" style="background:#fffbeb;border:2px solid #f59e0b;border-radius:12px;padding:14px 10px;">
+                <p style="margin:0 0 4px 0;font-size:20px;line-height:1;">🇵🇭</p>
+                <p style="margin:0 0 5px 0;font-size:10px;font-weight:700;color:#b45309;letter-spacing:1px;text-transform:uppercase;font-family:Arial,sans-serif;">PHP</p>
                 <p style="margin:0;font-size:13px;font-weight:800;color:#1e293b;font-family:Arial,sans-serif;">${parts[2]}</p>
               </td>
             </tr>
