@@ -11,9 +11,51 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { personalInfo } from "@/data/portfolio-data";
-import { Briefcase, Mail, Phone, Github, Linkedin, Send, Smartphone, Globe, Code, Users, CheckCircle2, Zap, Shield, Clock, Star, DollarSign, Calendar, Building } from "lucide-react";
+import { Briefcase, Mail, Phone, Github, Linkedin, Send, Smartphone, Globe, Code, Users, CheckCircle2, Zap, Shield, Clock, Star, DollarSign, Calendar, Building, ChevronsUpDown } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import { Check, Search } from "lucide-react";
+
+const currencies = [
+  { value: "$ USD", label: "USD — US Dollar", symbol: "$" },
+  { value: "€ EUR", label: "EUR — Euro", symbol: "€" },
+  { value: "£ GBP", label: "GBP — British Pound", symbol: "£" },
+  { value: "₹ INR", label: "INR — Indian Rupee", symbol: "₹" },
+  { value: "₱ PHP", label: "PHP — Philippine Peso", symbol: "₱" },
+  { value: "¥ JPY", label: "JPY — Japanese Yen", symbol: "¥" },
+  { value: "¥ CNY", label: "CNY — Chinese Yuan", symbol: "¥" },
+  { value: "₩ KRW", label: "KRW — South Korean Won", symbol: "₩" },
+  { value: "₽ RUB", label: "RUB — Russian Ruble", symbol: "₽" },
+  { value: "﷼ SAR", label: "SAR — Saudi Riyal", symbol: "﷼" },
+  { value: "د.إ AED", label: "AED — UAE Dirham", symbol: "د.إ" },
+  { value: "৳ BDT", label: "BDT — Bangladeshi Taka", symbol: "৳" },
+  { value: "₺ TRY", label: "TRY — Turkish Lira", symbol: "₺" },
+  { value: "RM MYR", label: "MYR — Malaysian Ringgit", symbol: "RM" },
+  { value: "S$ SGD", label: "SGD — Singapore Dollar", symbol: "S$" },
+  { value: "A$ AUD", label: "AUD — Australian Dollar", symbol: "A$" },
+  { value: "C$ CAD", label: "CAD — Canadian Dollar", symbol: "C$" },
+  { value: "CHF CHF", label: "CHF — Swiss Franc", symbol: "CHF" },
+  { value: "kr SEK", label: "SEK — Swedish Krona", symbol: "kr" },
+  { value: "R ZAR", label: "ZAR — South African Rand", symbol: "R" },
+  { value: "R$ BRL", label: "BRL — Brazilian Real", symbol: "R$" },
+  { value: "$ MXN", label: "MXN — Mexican Peso", symbol: "$" },
+  { value: "₦ NGN", label: "NGN — Nigerian Naira", symbol: "₦" },
+  { value: "KSh KES", label: "KES — Kenyan Shilling", symbol: "KSh" },
+  { value: "฿ THB", label: "THB — Thai Baht", symbol: "฿" },
+  { value: "Rp IDR", label: "IDR — Indonesian Rupiah", symbol: "Rp" },
+  { value: "₫ VND", label: "VND — Vietnamese Dong", symbol: "₫" },
+  { value: "zł PLN", label: "PLN — Polish Zloty", symbol: "zł" },
+  { value: "Kč CZK", label: "CZK — Czech Koruna", symbol: "Kč" },
+  { value: "Ft HUF", label: "HUF — Hungarian Forint", symbol: "Ft" },
+  { value: "lei RON", label: "RON — Romanian Leu", symbol: "lei" },
+  { value: "₴ UAH", label: "UAH — Ukrainian Hryvnia", symbol: "₴" },
+  { value: "₪ ILS", label: "ILS — Israeli Shekel", symbol: "₪" },
+  { value: "﷼ IRR", label: "IRR — Iranian Rial", symbol: "﷼" },
+  { value: "₨ PKR", label: "PKR — Pakistani Rupee", symbol: "₨" },
+  { value: "₨ LKR", label: "LKR — Sri Lankan Rupee", symbol: "₨" },
+  { value: "৳ NPR", label: "NPR — Nepalese Rupee", symbol: "₨" },
+  { value: "kr NOK", label: "NOK — Norwegian Krone", symbol: "kr" },
+  { value: "kr DKK", label: "DKK — Danish Krone", symbol: "kr" },
+];
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
@@ -124,6 +166,7 @@ export default function HireMePage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [countryOpen, setCountryOpen] = useState(false);
+  const [currencyOpen, setCurrencyOpen] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("+91");
   const [formData, setFormData] = useState({
     name: "",
