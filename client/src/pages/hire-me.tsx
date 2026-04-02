@@ -131,7 +131,8 @@ export default function HireMePage() {
     company: "",
     mobile: "",
     projectType: "",
-    budget: "",
+    currency: "$ USD",
+    budgetAmount: "",
     timeline: "",
     description: "",
   });
@@ -142,8 +143,8 @@ export default function HireMePage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.projectType || !formData.budget || !formData.timeline) {
-      toast({ title: "Please fill all required fields", description: "Project type, budget, and timeline are required." });
+    if (!formData.projectType || !formData.budgetAmount || !formData.timeline) {
+      toast({ title: "Please fill all required fields", description: "Project type, budget amount, and timeline are required." });
       return;
     }
     setShowConfirm(true);
@@ -159,7 +160,7 @@ export default function HireMePage() {
       company: formData.company || "Not specified",
       mobile: `${selectedCountry} ${formData.mobile}`,
       projectType: formData.projectType,
-      budget: formData.budget,
+      budget: `${formData.currency} ${formData.budgetAmount}`,
       timeline: formData.timeline,
       description: formData.description,
       type: "hire",
@@ -192,7 +193,7 @@ export default function HireMePage() {
       title: "Hire request sent successfully!",
       description: "Thank you! I'll review your project and get back to you within 24 hours.",
     });
-    setFormData({ name: "", email: "", company: "", mobile: "", projectType: "", budget: "", timeline: "", description: "" });
+    setFormData({ name: "", email: "", company: "", mobile: "", projectType: "", currency: "$ USD", budgetAmount: "", timeline: "", description: "" });
     setIsSubmitting(false);
     navigate("/");
   };
@@ -220,10 +221,10 @@ export default function HireMePage() {
                   <span><strong>Type:</strong> {formData.projectType}</span>
                 </div>
               )}
-              {formData.budget && (
+              {formData.budgetAmount && (
                 <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
                   <span className="text-emerald-500">💰</span>
-                  <span><strong>Budget:</strong> {formData.budget}</span>
+                  <span><strong>Budget:</strong> {formData.currency} {formData.budgetAmount}</span>
                 </div>
               )}
               {formData.timeline && (
@@ -513,20 +514,52 @@ export default function HireMePage() {
                     </div>
 
                     <div className="space-y-1.5">
-                      <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Budget Range *</Label>
-                      <Select onValueChange={(v) => handleInputChange("budget", v)} value={formData.budget}>
-                        <SelectTrigger className="border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800" data-testid="select-budget">
-                          <SelectValue placeholder="Select budget" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-xl rounded-xl min-w-[340px]">
-                          <SelectItem value="Under $500 · ₹41,500 · ₱28,000">💵 Under $500 &nbsp;·&nbsp; ₹41,500 &nbsp;·&nbsp; ₱28,000</SelectItem>
-                          <SelectItem value="$500–$1,500 · ₹41,500–₹1,24,500 · ₱28K–₱84K">💵 $500–$1,500 &nbsp;·&nbsp; ₹41K–₹1.24L &nbsp;·&nbsp; ₱28K–₱84K</SelectItem>
-                          <SelectItem value="$1,500–$5,000 · ₹1.25L–₹4.15L · ₱84K–₱280K">💰 $1.5K–$5K &nbsp;·&nbsp; ₹1.25L–₹4.15L &nbsp;·&nbsp; ₱84K–₱280K</SelectItem>
-                          <SelectItem value="$5,000–$15,000 · ₹4.15L–₹12.45L · ₱280K–₱840K">💰 $5K–$15K &nbsp;·&nbsp; ₹4.15L–₹12.45L &nbsp;·&nbsp; ₱280K–₱840K</SelectItem>
-                          <SelectItem value="$15,000+ · ₹12.45L+ · ₱840K+">💎 $15K+ &nbsp;·&nbsp; ₹12.45L+ &nbsp;·&nbsp; ₱840K+</SelectItem>
-                          <SelectItem value="Negotiable">🤝 Negotiable / Open Budget</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Budget *</Label>
+                      <div className="flex gap-2">
+                        <Select onValueChange={(v) => handleInputChange("currency", v)} value={formData.currency}>
+                          <SelectTrigger className="border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 w-[160px] shrink-0 font-semibold" data-testid="select-currency">
+                            <SelectValue placeholder="Currency" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-xl rounded-xl max-h-72">
+                            <SelectItem value="$ USD">$ USD — Dollar</SelectItem>
+                            <SelectItem value="€ EUR">€ EUR — Euro</SelectItem>
+                            <SelectItem value="£ GBP">£ GBP — Pound</SelectItem>
+                            <SelectItem value="₹ INR">₹ INR — Rupee</SelectItem>
+                            <SelectItem value="₱ PHP">₱ PHP — Peso</SelectItem>
+                            <SelectItem value="¥ JPY">¥ JPY — Yen</SelectItem>
+                            <SelectItem value="¥ CNY">¥ CNY — Yuan</SelectItem>
+                            <SelectItem value="₩ KRW">₩ KRW — Won</SelectItem>
+                            <SelectItem value="₽ RUB">₽ RUB — Ruble</SelectItem>
+                            <SelectItem value="﷼ SAR">﷼ SAR — Riyal</SelectItem>
+                            <SelectItem value="د.إ AED">د.إ AED — Dirham</SelectItem>
+                            <SelectItem value="৳ BDT">৳ BDT — Taka</SelectItem>
+                            <SelectItem value="₺ TRY">₺ TRY — Lira</SelectItem>
+                            <SelectItem value="RM MYR">RM MYR — Ringgit</SelectItem>
+                            <SelectItem value="S$ SGD">S$ SGD — S. Dollar</SelectItem>
+                            <SelectItem value="A$ AUD">A$ AUD — A. Dollar</SelectItem>
+                            <SelectItem value="C$ CAD">C$ CAD — C. Dollar</SelectItem>
+                            <SelectItem value="CHF CHF">CHF — Swiss Franc</SelectItem>
+                            <SelectItem value="kr SEK">kr SEK — Krona</SelectItem>
+                            <SelectItem value="R ZAR">R ZAR — Rand</SelectItem>
+                            <SelectItem value="R$ BRL">R$ BRL — Real</SelectItem>
+                            <SelectItem value="$ MXN">$ MXN — M. Peso</SelectItem>
+                            <SelectItem value="₦ NGN">₦ NGN — Naira</SelectItem>
+                            <SelectItem value="KSh KES">KSh KES — Shilling</SelectItem>
+                            <SelectItem value="฿ THB">฿ THB — Baht</SelectItem>
+                            <SelectItem value="Rp IDR">Rp IDR — Rupiah</SelectItem>
+                            <SelectItem value="₫ VND">₫ VND — Dong</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <Input
+                          data-testid="input-budget-amount"
+                          type="text"
+                          placeholder="e.g. 5000"
+                          value={formData.budgetAmount}
+                          onChange={(e) => handleInputChange("budgetAmount", e.target.value)}
+                          className="border-slate-200 dark:border-slate-700 focus:border-violet-500 focus:ring-violet-500/20 flex-1 font-semibold"
+                        />
+                      </div>
+                      <p className="text-xs text-slate-400 dark:text-slate-500">Select your currency and enter the budget amount</p>
                     </div>
 
                     <div className="space-y-1.5">
