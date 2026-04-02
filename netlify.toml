@@ -3,7 +3,6 @@
   publish = "dist/public"
   functions = "netlify/functions"
 
-
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
@@ -11,6 +10,11 @@
 [[redirects]]
   from = "/api/notify"
   to = "/.netlify/functions/notify"
+  status = 200
+
+[[redirects]]
+  from = "/api/hire-notify"
+  to = "/.netlify/functions/hire-notify"
   status = 200
 
 [[redirects]]
