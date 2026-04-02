@@ -494,7 +494,7 @@ export default function HireMePage() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-1.5">
                       <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Project Type *</Label>
                       <Select onValueChange={(v) => handleInputChange("projectType", v)} value={formData.projectType}>
@@ -514,55 +514,6 @@ export default function HireMePage() {
                     </div>
 
                     <div className="space-y-1.5">
-                      <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Budget *</Label>
-                      <div className="flex gap-2">
-                        <Select onValueChange={(v) => handleInputChange("currency", v)} value={formData.currency}>
-                          <SelectTrigger className="border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 w-[160px] shrink-0 font-semibold" data-testid="select-currency">
-                            <SelectValue placeholder="Currency" />
-                          </SelectTrigger>
-                          <SelectContent className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-xl rounded-xl max-h-72">
-                            <SelectItem value="$ USD">$ USD — Dollar</SelectItem>
-                            <SelectItem value="€ EUR">€ EUR — Euro</SelectItem>
-                            <SelectItem value="£ GBP">£ GBP — Pound</SelectItem>
-                            <SelectItem value="₹ INR">₹ INR — Rupee</SelectItem>
-                            <SelectItem value="₱ PHP">₱ PHP — Peso</SelectItem>
-                            <SelectItem value="¥ JPY">¥ JPY — Yen</SelectItem>
-                            <SelectItem value="¥ CNY">¥ CNY — Yuan</SelectItem>
-                            <SelectItem value="₩ KRW">₩ KRW — Won</SelectItem>
-                            <SelectItem value="₽ RUB">₽ RUB — Ruble</SelectItem>
-                            <SelectItem value="﷼ SAR">﷼ SAR — Riyal</SelectItem>
-                            <SelectItem value="د.إ AED">د.إ AED — Dirham</SelectItem>
-                            <SelectItem value="৳ BDT">৳ BDT — Taka</SelectItem>
-                            <SelectItem value="₺ TRY">₺ TRY — Lira</SelectItem>
-                            <SelectItem value="RM MYR">RM MYR — Ringgit</SelectItem>
-                            <SelectItem value="S$ SGD">S$ SGD — S. Dollar</SelectItem>
-                            <SelectItem value="A$ AUD">A$ AUD — A. Dollar</SelectItem>
-                            <SelectItem value="C$ CAD">C$ CAD — C. Dollar</SelectItem>
-                            <SelectItem value="CHF CHF">CHF — Swiss Franc</SelectItem>
-                            <SelectItem value="kr SEK">kr SEK — Krona</SelectItem>
-                            <SelectItem value="R ZAR">R ZAR — Rand</SelectItem>
-                            <SelectItem value="R$ BRL">R$ BRL — Real</SelectItem>
-                            <SelectItem value="$ MXN">$ MXN — M. Peso</SelectItem>
-                            <SelectItem value="₦ NGN">₦ NGN — Naira</SelectItem>
-                            <SelectItem value="KSh KES">KSh KES — Shilling</SelectItem>
-                            <SelectItem value="฿ THB">฿ THB — Baht</SelectItem>
-                            <SelectItem value="Rp IDR">Rp IDR — Rupiah</SelectItem>
-                            <SelectItem value="₫ VND">₫ VND — Dong</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <Input
-                          data-testid="input-budget-amount"
-                          type="text"
-                          placeholder="e.g. 5000"
-                          value={formData.budgetAmount}
-                          onChange={(e) => handleInputChange("budgetAmount", e.target.value)}
-                          className="border-slate-200 dark:border-slate-700 focus:border-violet-500 focus:ring-violet-500/20 flex-1 font-semibold"
-                        />
-                      </div>
-                      <p className="text-xs text-slate-400 dark:text-slate-500">Select your currency and enter the budget amount</p>
-                    </div>
-
-                    <div className="space-y-1.5">
                       <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Timeline *</Label>
                       <Select onValueChange={(v) => handleInputChange("timeline", v)} value={formData.timeline}>
                         <SelectTrigger className="border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800" data-testid="select-timeline">
@@ -578,6 +529,55 @@ export default function HireMePage() {
                         </SelectContent>
                       </Select>
                     </div>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Budget *</Label>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <Select onValueChange={(v) => handleInputChange("currency", v)} value={formData.currency}>
+                        <SelectTrigger className="border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 font-semibold" data-testid="select-currency">
+                          <SelectValue placeholder="Currency" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-xl rounded-xl max-h-72">
+                          <SelectItem value="$ USD">$ USD — Dollar</SelectItem>
+                          <SelectItem value="€ EUR">€ EUR — Euro</SelectItem>
+                          <SelectItem value="£ GBP">£ GBP — Pound</SelectItem>
+                          <SelectItem value="₹ INR">₹ INR — Rupee</SelectItem>
+                          <SelectItem value="₱ PHP">₱ PHP — Peso</SelectItem>
+                          <SelectItem value="¥ JPY">¥ JPY — Yen</SelectItem>
+                          <SelectItem value="¥ CNY">¥ CNY — Yuan</SelectItem>
+                          <SelectItem value="₩ KRW">₩ KRW — Won</SelectItem>
+                          <SelectItem value="₽ RUB">₽ RUB — Ruble</SelectItem>
+                          <SelectItem value="﷼ SAR">﷼ SAR — Riyal</SelectItem>
+                          <SelectItem value="د.إ AED">د.إ AED — Dirham</SelectItem>
+                          <SelectItem value="৳ BDT">৳ BDT — Taka</SelectItem>
+                          <SelectItem value="₺ TRY">₺ TRY — Lira</SelectItem>
+                          <SelectItem value="RM MYR">RM MYR — Ringgit</SelectItem>
+                          <SelectItem value="S$ SGD">S$ SGD — S. Dollar</SelectItem>
+                          <SelectItem value="A$ AUD">A$ AUD — A. Dollar</SelectItem>
+                          <SelectItem value="C$ CAD">C$ CAD — C. Dollar</SelectItem>
+                          <SelectItem value="CHF CHF">CHF — Swiss Franc</SelectItem>
+                          <SelectItem value="kr SEK">kr SEK — Krona</SelectItem>
+                          <SelectItem value="R ZAR">R ZAR — Rand</SelectItem>
+                          <SelectItem value="R$ BRL">R$ BRL — Real</SelectItem>
+                          <SelectItem value="$ MXN">$ MXN — M. Peso</SelectItem>
+                          <SelectItem value="₦ NGN">₦ NGN — Naira</SelectItem>
+                          <SelectItem value="KSh KES">KSh KES — Shilling</SelectItem>
+                          <SelectItem value="฿ THB">฿ THB — Baht</SelectItem>
+                          <SelectItem value="Rp IDR">Rp IDR — Rupiah</SelectItem>
+                          <SelectItem value="₫ VND">₫ VND — Dong</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <Input
+                        data-testid="input-budget-amount"
+                        type="text"
+                        placeholder="Enter amount (e.g. 5000)"
+                        value={formData.budgetAmount}
+                        onChange={(e) => handleInputChange("budgetAmount", e.target.value)}
+                        className="sm:col-span-2 border-slate-200 dark:border-slate-700 focus:border-violet-500 focus:ring-violet-500/20 font-semibold"
+                      />
+                    </div>
+                    <p className="text-xs text-slate-400 dark:text-slate-500">Select your currency and enter the budget amount</p>
                   </div>
 
                   <div className="space-y-1.5">
